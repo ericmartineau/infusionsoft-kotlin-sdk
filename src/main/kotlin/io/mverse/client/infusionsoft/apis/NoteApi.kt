@@ -29,34 +29,34 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun createNote(createNote: RequestNote) : Note {
-        val localVariableBody: Any? = createNote
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = createNote
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/notes",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Note>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Note
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/notes",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Note>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Note
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -66,34 +66,34 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     * @return void
     */
     fun deleteNote(noteId: Long) : Unit {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.DELETE,
-            "/notes/{noteId}".replace("{"+"noteId"+"}", "$noteId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Unit>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.DELETE,
+           "/notes/{noteId}".replace("{"+"noteId"+"}", "$noteId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Unit>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> Unit
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -104,34 +104,34 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun getNote(noteId: Long) : Note {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/notes/{noteId}".replace("{"+"noteId"+"}", "$noteId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Note>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Note
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/notes/{noteId}".replace("{"+"noteId"+"}", "$noteId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Note>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Note
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -145,38 +145,38 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun listNotes(limit: Int? = null, offset: Int? = null, userId: Long? = null, contactId: Long? = null) : NoteList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (userId != null) localVariableQuery["user_id"] to listOf("$userId")
-if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (userId != null) localVariableQuery["user_id"] = listOf("$userId")
+      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/notes",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<NoteList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/notes",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<NoteList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as NoteList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as NoteList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -188,34 +188,34 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun updateNote(note: Long, requestNote: RequestNote) : Note {
-        val localVariableBody: Any? = requestNote
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = requestNote
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.PUT,
-            "/notes/{noteId}".replace("{"+"note"+"}", "$note"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Note>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Note
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.PUT,
+           "/notes/{noteId}".replace("{"+"note"+"}", "$note"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Note>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Note
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -227,34 +227,34 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun updatePropertiesOnNote(noteId: Long, note: UpdateNote? = null) : Note {
-        val localVariableBody: Any? = note
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = note
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.PATCH,
-            "/notes/{noteId}".replace("{"+"noteId"+"}", "$noteId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Note>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Note
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.PATCH,
+           "/notes/{noteId}".replace("{"+"noteId"+"}", "$noteId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Note>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Note
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
 }

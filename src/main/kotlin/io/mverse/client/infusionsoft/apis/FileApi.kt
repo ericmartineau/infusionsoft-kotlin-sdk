@@ -28,34 +28,34 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun createFile(fileUpload: FileUpload? = null) : FileInformation {
-        val localVariableBody: Any? = fileUpload
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = fileUpload
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/files",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<FileInformation>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as FileInformation
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/files",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<FileInformation>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as FileInformation
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -65,34 +65,34 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     * @return void
     */
     fun deleteFile(fileId: Long) : Unit {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.DELETE,
-            "/files/{fileId}".replace("{"+"fileId"+"}", "$fileId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Unit>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.DELETE,
+           "/files/{fileId}".replace("{"+"fileId"+"}", "$fileId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Unit>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> Unit
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -104,35 +104,35 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun getFile(fileId: Long, optionalProperties: List<String>? = null) : FileInformation {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (optionalProperties != null) localVariableQuery["optional_properties"] to toMultiValue(optionalProperties!!.toList(), "multi")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (optionalProperties != null) localVariableQuery["optional_properties"] = toMultiValue(optionalProperties!!.toList(), "multi")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/files/{fileId}".replace("{"+"fileId"+"}", "$fileId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<FileInformation>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/files/{fileId}".replace("{"+"fileId"+"}", "$fileId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<FileInformation>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as FileInformation
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as FileInformation
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -149,41 +149,41 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun listFiles(limit: Int? = null, offset: Int? = null, viewable: String? = null, permission: String? = null, type: String? = null, name: String? = null, contactId: Long? = null) : FileList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (viewable != null) localVariableQuery["viewable"] to listOf("$viewable")
-if (permission != null) localVariableQuery["permission"] to listOf("$permission")
-if (type != null) localVariableQuery["type"] to listOf("$type")
-if (name != null) localVariableQuery["name"] to listOf("$name")
-if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (viewable != null) localVariableQuery["viewable"] = listOf("$viewable")
+      if (permission != null) localVariableQuery["permission"] = listOf("$permission")
+      if (type != null) localVariableQuery["type"] = listOf("$type")
+      if (name != null) localVariableQuery["name"] = listOf("$name")
+      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/files",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<FileList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/files",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<FileList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as FileList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as FileList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -195,34 +195,34 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun updateFile(fileId: Long, fileUpload: FileUpload? = null) : FileInformation {
-        val localVariableBody: Any? = fileUpload
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = fileUpload
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.PUT,
-            "/files/{fileId}".replace("{"+"fileId"+"}", "$fileId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<FileInformation>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as FileInformation
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.PUT,
+           "/files/{fileId}".replace("{"+"fileId"+"}", "$fileId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<FileInformation>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as FileInformation
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
 }

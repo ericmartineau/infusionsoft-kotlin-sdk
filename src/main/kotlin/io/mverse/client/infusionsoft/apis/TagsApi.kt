@@ -35,34 +35,34 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun applyTagToContactIds(tagId: Long, ids: SetOfIds) : List<EntryLongCommastring_> {
-        val localVariableBody: Any? = ids
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = ids
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/tags/{tagId}/contacts".replace("{"+"tagId"+"}", "$tagId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<List<EntryLongCommastring_>>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as List<EntryLongCommastring_>
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/tags/{tagId}/contacts".replace("{"+"tagId"+"}", "$tagId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<List<EntryLongCommastring_>>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as List<EntryLongCommastring_>
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -73,34 +73,34 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun createTag(tag: CreateTag) : Tag {
-        val localVariableBody: Any? = tag
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = tag
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/tags",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Tag>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Tag
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/tags",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Tag>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Tag
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -111,34 +111,34 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun createTagCategory(tagCategory: CreateTagCategory) : TagCategory {
-        val localVariableBody: Any? = tagCategory
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = tagCategory
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/tags/categories",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<TagCategory>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TagCategory
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/tags/categories",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<TagCategory>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as TagCategory
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -149,34 +149,34 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun getTag(id: Long) : Tag {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/tags/{id}".replace("{"+"id"+"}", "$id"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Tag>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Tag
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/tags/{id}".replace("{"+"id"+"}", "$id"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Tag>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Tag
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -189,36 +189,36 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
     */
     @Suppress("UNCHECKED_CAST")
     fun listCompaniesForTagId(tagId: Long, limit: Int? = null, offset: Int? = null) : TaggedCompanyList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/tags/{tagId}/companies".replace("{"+"tagId"+"}", "$tagId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<TaggedCompanyList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/tags/{tagId}/companies".replace("{"+"tagId"+"}", "$tagId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<TaggedCompanyList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TaggedCompanyList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as TaggedCompanyList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -231,36 +231,36 @@ if (offset != null) localVariableQuery["offset"] to listOf("$offset")
     */
     @Suppress("UNCHECKED_CAST")
     fun listContactsForTagId(tagId: Long, limit: Int? = null, offset: Int? = null) : TaggedContactList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/tags/{tagId}/contacts".replace("{"+"tagId"+"}", "$tagId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<TaggedContactList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/tags/{tagId}/contacts".replace("{"+"tagId"+"}", "$tagId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<TaggedContactList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TaggedContactList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as TaggedContactList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -274,38 +274,38 @@ if (offset != null) localVariableQuery["offset"] to listOf("$offset")
     */
     @Suppress("UNCHECKED_CAST")
     fun listTags(limit: Int? = null, offset: Int? = null, category: Long? = null, name: String? = null) : Tags {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (category != null) localVariableQuery["category"] to listOf("$category")
-if (name != null) localVariableQuery["name"] to listOf("$name")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (category != null) localVariableQuery["category"] = listOf("$category")
+      if (name != null) localVariableQuery["name"] = listOf("$name")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/tags",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Tags>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/tags",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Tags>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Tags
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Tags
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -316,34 +316,34 @@ if (name != null) localVariableQuery["name"] to listOf("$name")
     * @return void
     */
     fun removeTagFromContactId(tagId: Long, contactId: Long) : Unit {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.DELETE,
-            "/tags/{tagId}/contacts/{contactId}".replace("{"+"tagId"+"}", "$tagId").replace("{"+"contactId"+"}", "$contactId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Unit>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.DELETE,
+           "/tags/{tagId}/contacts/{contactId}".replace("{"+"tagId"+"}", "$tagId").replace("{"+"contactId"+"}", "$contactId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Unit>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> Unit
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -354,35 +354,35 @@ if (name != null) localVariableQuery["name"] to listOf("$name")
     * @return void
     */
     fun removeTagFromContactIds(tagId: Long, ids: List<Long>) : Unit {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (ids != null) localVariableQuery["ids"] to toMultiValue(ids!!.toList(), "multi")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (ids != null) localVariableQuery["ids"] = toMultiValue(ids!!.toList(), "multi")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.DELETE,
-            "/tags/{tagId}/contacts".replace("{"+"tagId"+"}", "$tagId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Unit>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.DELETE,
+           "/tags/{tagId}/contacts".replace("{"+"tagId"+"}", "$tagId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Unit>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> Unit
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
 }

@@ -37,34 +37,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     */
     @Suppress("UNCHECKED_CAST")
     fun createOrder(createOrder: CreateOrder) : Order {
-        val localVariableBody: Any? = createOrder
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = createOrder
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/orders",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Order>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Order
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/orders",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Order>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Order
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -76,34 +76,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     */
     @Suppress("UNCHECKED_CAST")
     fun createOrderItemsOnOrder(createOrderItem: CreateOrderItem, orderId: Long) : OrderItem {
-        val localVariableBody: Any? = createOrderItem
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = createOrderItem
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/orders/{orderId}/items".replace("{"+"orderId"+"}", "$orderId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<OrderItem>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as OrderItem
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/orders/{orderId}/items".replace("{"+"orderId"+"}", "$orderId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<OrderItem>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as OrderItem
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -115,34 +115,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     */
     @Suppress("UNCHECKED_CAST")
     fun createPaymentOnOrder(orderId: Long, createPayment: CreatePayment? = null) : PaymentResult {
-        val localVariableBody: Any? = createPayment
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = createPayment
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.POST,
-            "/orders/{orderId}/payments".replace("{"+"orderId"+"}", "$orderId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<PaymentResult>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as PaymentResult
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.POST,
+           "/orders/{orderId}/payments".replace("{"+"orderId"+"}", "$orderId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<PaymentResult>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as PaymentResult
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -152,34 +152,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     * @return void
     */
     fun deleteOrder(orderId: Long) : Unit {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.DELETE,
-            "/orders/{orderId}".replace("{"+"orderId"+"}", "$orderId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Unit>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.DELETE,
+           "/orders/{orderId}".replace("{"+"orderId"+"}", "$orderId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Unit>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> Unit
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -190,34 +190,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     * @return void
     */
     fun deleteOrderOrderItem(orderId: Long, orderItemId: Long) : Unit {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.DELETE,
-            "/orders/{orderId}/items/{orderItemId}".replace("{"+"orderId"+"}", "$orderId").replace("{"+"orderItemId"+"}", "$orderItemId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Unit>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.DELETE,
+           "/orders/{orderId}/items/{orderItemId}".replace("{"+"orderId"+"}", "$orderId").replace("{"+"orderItemId"+"}", "$orderItemId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Unit>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> Unit
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -228,34 +228,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     */
     @Suppress("UNCHECKED_CAST")
     fun getOrder(orderId: Long) : Order {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/orders/{orderId}".replace("{"+"orderId"+"}", "$orderId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Order>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Order
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/orders/{orderId}".replace("{"+"orderId"+"}", "$orderId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Order>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Order
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -266,34 +266,34 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     */
     @Suppress("UNCHECKED_CAST")
     fun getTransaction(transactionId: Long) : Transaction {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/transactions/{transactionId}".replace("{"+"transactionId"+"}", "$transactionId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<Transaction>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as Transaction
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/transactions/{transactionId}".replace("{"+"transactionId"+"}", "$transactionId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<Transaction>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as Transaction
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -311,42 +311,42 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
     */
     @Suppress("UNCHECKED_CAST")
     fun listOrders(since: String? = null, until: String? = null, limit: Int? = null, offset: Int? = null, paid: Boolean? = null, order: String? = null, contactId: Long? = null, productId: Long? = null) : OrderList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (since != null) localVariableQuery["since"] to listOf("$since")
-if (until != null) localVariableQuery["until"] to listOf("$until")
-if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (paid != null) localVariableQuery["paid"] to listOf("$paid")
-if (order != null) localVariableQuery["order"] to listOf("$order")
-if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
-if (productId != null) localVariableQuery["product_id"] to listOf("$productId")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (since != null) localVariableQuery["since"] = listOf("$since")
+      if (until != null) localVariableQuery["until"] = listOf("$until")
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (paid != null) localVariableQuery["paid"] = listOf("$paid")
+      if (order != null) localVariableQuery["order"] = listOf("$order")
+      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
+      if (productId != null) localVariableQuery["product_id"] = listOf("$productId")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/orders",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<OrderList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/orders",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<OrderList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as OrderList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as OrderList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -359,37 +359,37 @@ if (productId != null) localVariableQuery["product_id"] to listOf("$productId")
     */
     @Suppress("UNCHECKED_CAST")
     fun listSubscriptions(limit: Int? = null, offset: Int? = null, contactId: Long? = null) : SubscriptionList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/subscriptions",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<SubscriptionList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/subscriptions",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<SubscriptionList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as SubscriptionList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as SubscriptionList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -404,39 +404,39 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun listTransactions(since: String? = null, until: String? = null, limit: Int? = null, offset: Int? = null, contactId: Long? = null) : TransactionList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (since != null) localVariableQuery["since"] to listOf("$since")
-if (until != null) localVariableQuery["until"] to listOf("$until")
-if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (since != null) localVariableQuery["since"] = listOf("$since")
+      if (until != null) localVariableQuery["until"] = listOf("$until")
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/transactions",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<TransactionList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/transactions",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<TransactionList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TransactionList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as TransactionList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -452,39 +452,39 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun listTransactionsForOrder(orderId: Long, since: String? = null, until: String? = null, limit: Int? = null, offset: Int? = null, contactId: Long? = null) : TransactionList {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        if (since != null) localVariableQuery["since"] to listOf("$since")
-if (until != null) localVariableQuery["until"] to listOf("$until")
-if (limit != null) localVariableQuery["limit"] to listOf("$limit")
-if (offset != null) localVariableQuery["offset"] to listOf("$offset")
-if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
+      if (since != null) localVariableQuery["since"] = listOf("$since")
+      if (until != null) localVariableQuery["until"] = listOf("$until")
+      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
 
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/orders/{orderId}/transactions".replace("{"+"orderId"+"}", "$orderId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<TransactionList>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/orders/{orderId}/transactions".replace("{"+"orderId"+"}", "$orderId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<TransactionList>(
+           localVariableConfig,
+           localVariableBody
+       )
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TransactionList
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as TransactionList
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -496,34 +496,34 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun replacePaymentPlan(orderId: Long, paymentPlan: PaymentPlan) : PaymentPlan {
-        val localVariableBody: Any? = paymentPlan
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = paymentPlan
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.PUT,
-            "/orders/{orderId}/paymentPlan".replace("{"+"orderId"+"}", "$orderId"),
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<PaymentPlan>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as PaymentPlan
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.PUT,
+           "/orders/{orderId}/paymentPlan".replace("{"+"orderId"+"}", "$orderId"),
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<PaymentPlan>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as PaymentPlan
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -533,34 +533,34 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun retrieveOrderModel() : ObjectModel {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/orders/model",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<ObjectModel>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as ObjectModel
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/orders/model",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<ObjectModel>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as ObjectModel
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
     /**
@@ -570,34 +570,34 @@ if (contactId != null) localVariableQuery["contact_id"] to listOf("$contactId")
     */
     @Suppress("UNCHECKED_CAST")
     fun retrieveSubscriptionModel() : ObjectModel {
-        val localVariableBody: Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        
-        val contentHeaders: Map<String, String> = mapOf()
-        val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders.putAll(contentHeaders)
-        localVariableHeaders.putAll(acceptsHeaders)
+       val localVariableBody: Any? = null
+       val localVariableQuery: MultiValueMap = mutableMapOf()
 
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/subscriptions/model",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
-        val response = request<ObjectModel>(
-            localVariableConfig,
-            localVariableBody
-        )
+       val contentHeaders: Map<String, String> = mapOf()
+       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+       localVariableHeaders.putAll(contentHeaders)
+       localVariableHeaders.putAll(acceptsHeaders)
 
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as ObjectModel
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-        }
+       val localVariableConfig = RequestConfig(
+           RequestMethod.GET,
+           "/subscriptions/model",
+           query = localVariableQuery,
+           headers = localVariableHeaders
+       )
+       val response = request<ObjectModel>(
+           localVariableConfig,
+           localVariableBody
+       )
+
+       return when (response.responseType) {
+           ResponseType.Success -> (response as Success<*>).data as ObjectModel
+           ResponseType.Informational -> TODO()
+           ResponseType.Redirection -> TODO()
+           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+       }
     }
 
 }

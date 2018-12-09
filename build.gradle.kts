@@ -1,5 +1,6 @@
 plugins {
   id("io.mverse.project") version "0.5.32"
+  id("io.mverse.multi-platform") version "0.5.32"
   id("kotlinx-serialization").version("1.3.10")
   id("org.jetbrains.kotlin.jvm").version("1.3.10")
 }

@@ -1,0 +1,41 @@
+pluginManagement {
+
+  repositories {
+    gradlePluginPortal()
+    google()
+    maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+    mavenCentral()
+    jcenter()
+    maven { url "https://dl.bintray.com/mverse-io/mverse-public" }
+    maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
+  }
+
+  resolutionStrategy {
+    eachPlugin {
+      if (requested.id.name == "appengine") {
+        useModule("com.google.cloud.tools:appengine-gradle-plugin:${requested.version}")
+      }
+      if (requested.id.id == "kotlin-platform-common") {
+        useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+      }
+
+      if (requested.id.id == "kotlin-platform-jvm") {
+        useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+      }
+
+      if (requested.id.id == "kotlin-platform-js") {
+        useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+      }
+
+      if (requested.id.id == "kotlin-multiplatform") {
+        useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+      }
+      if (requested.id.id == "kotlinx-serialization") {
+        useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
+      }
+
+    }
+  }
+}
+
+rootProject.name = '{{artifactId}}'

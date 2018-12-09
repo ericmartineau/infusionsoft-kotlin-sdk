@@ -1,0 +1,15 @@
+import {{packageName}}.infrastructure.EnumStringSerializer
+
+/**
+* {{{description}}}
+* Values: {{#allowableValues}}{{#enumVars}}{{&name}}{{^-last}},{{/-last}}{{/enumVars}}{{/allowableValues}}
+*/
+@Serializable(with = {{classname}}.Serializer::class)
+enum class {{classname}}(val value: {{dataType}}){
+{{#allowableValues}}{{#enumVars}}
+    {{&name}}({{{value}}}){{^-last}},{{/-last}}{{#-last}};{{/-last}}
+{{/enumVars}}{{/allowableValues}}
+  class Serializer: EnumStringSerializer<{{classname}}>({{classname}}::class)
+
+  override fun toString(): String = value.toString()
+}

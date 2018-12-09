@@ -1,0 +1,23 @@
+package {{packageName}}.infrastructure
+
+import {{packageName}}.apis.*
+import java.time.OffsetDateTime
+
+
+class {{artifactClassName}}(private val auth: OAuthToken,
+                         private val tokenGenerator: AccessTokenGenerator,
+                         private val baseUrl: String = "{{{basePath}}}") {
+
+{{#apiInfo}}
+    {{#apis}}
+  val {{classVarName}}Api: {{{classFilename}}} get() = {{{classFilename}}}(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
+    {{/apis}}
+{{/apiInfo}}
+
+}
+
+data class OAuthToken(val accessToken:String, val refreshToken: String, val expiry: OffsetDateTime)
+
+interface AccessTokenGenerator {
+  fun accessToken(auth:OAuthToken, baseUrl: String): String
+}

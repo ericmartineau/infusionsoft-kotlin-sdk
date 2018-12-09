@@ -10,6 +10,7 @@ version = "1.0.0"
 
 mverse {
   isDefaultDependencies = false
+  coverageRequirement = 0.0
 }
 
 repositories {

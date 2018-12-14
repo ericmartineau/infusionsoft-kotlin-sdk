@@ -50,7 +50,7 @@ class NoteApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       Note.serializer(),
-      Note.serializer())
+      RequestNote.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Note
@@ -206,7 +206,7 @@ class NoteApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       Note.serializer(),
-      Note.serializer())
+      RequestNote.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Note
@@ -245,7 +245,7 @@ class NoteApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       Note.serializer(),
-      Note.serializer())
+      UpdateNote.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Note

@@ -164,7 +164,7 @@ class EmailApi(bearerToken:String, basePath: String = "https://api.infusionsoft.
       localVariableConfig,
       requestBody, 
       (String.serializer() to String.serializer()).map,
-      
+      SetOfIds.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Map<kotlin.String, String>
@@ -286,8 +286,7 @@ class EmailApi(bearerToken:String, basePath: String = "https://api.infusionsoft.
       localVariableConfig,
       requestBody, 
       UnitSerializer, 
-      
-      UnitSerializer)
+      EmailSendRequest.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> Unit

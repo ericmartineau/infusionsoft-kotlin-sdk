@@ -56,7 +56,7 @@ class TagsApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       EntryLongCommastring_.serializer().list,
-      
+      SetOfIds.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as List<EntryLongCommastring_>
@@ -94,7 +94,7 @@ class TagsApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       Tag.serializer(),
-      Tag.serializer())
+      CreateTag.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Tag
@@ -132,7 +132,7 @@ class TagsApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       TagCategory.serializer(),
-      TagCategory.serializer())
+      CreateTagCategory.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as TagCategory

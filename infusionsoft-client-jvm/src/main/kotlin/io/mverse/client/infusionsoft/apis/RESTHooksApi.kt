@@ -48,7 +48,7 @@ class RESTHooksApi(bearerToken:String, basePath: String = "https://api.infusions
       localVariableConfig,
       requestBody, 
       RestHook.serializer(),
-      RestHook.serializer())
+      RestHookRequest.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as RestHook
@@ -232,7 +232,7 @@ class RESTHooksApi(bearerToken:String, basePath: String = "https://api.infusions
       localVariableConfig,
       requestBody, 
       RestHook.serializer(),
-      RestHook.serializer())
+      RestHookRequest.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as RestHook

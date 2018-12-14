@@ -89,7 +89,7 @@ class CampaignApi(bearerToken:String, basePath: String = "https://api.infusionso
       localVariableConfig,
       requestBody, 
       (String.serializer() to String.serializer()).map,
-      
+      SetOfIds.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Map<kotlin.String, String>
@@ -251,8 +251,7 @@ class CampaignApi(bearerToken:String, basePath: String = "https://api.infusionso
       localVariableConfig,
       requestBody, 
       UnitSerializer, 
-      
-      UnitSerializer)
+      SetOfIds.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> Unit

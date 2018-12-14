@@ -58,7 +58,7 @@ class ECommerceApi(bearerToken:String, basePath: String = "https://api.infusions
       localVariableConfig,
       requestBody, 
       Order.serializer(),
-      Order.serializer())
+      CreateOrder.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Order
@@ -97,7 +97,7 @@ class ECommerceApi(bearerToken:String, basePath: String = "https://api.infusions
       localVariableConfig,
       requestBody, 
       OrderItem.serializer(),
-      OrderItem.serializer())
+      CreateOrderItem.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as OrderItem
@@ -136,7 +136,7 @@ class ECommerceApi(bearerToken:String, basePath: String = "https://api.infusions
       localVariableConfig,
       requestBody, 
       PaymentResult.serializer(),
-      PaymentResult.serializer())
+      CreatePayment.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as PaymentResult

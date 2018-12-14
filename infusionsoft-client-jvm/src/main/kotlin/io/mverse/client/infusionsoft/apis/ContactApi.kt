@@ -62,7 +62,7 @@ class ContactApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       EntryLongCommastring_.serializer().list,
-      
+      TagId.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as List<EntryLongCommastring_>
@@ -100,7 +100,7 @@ class ContactApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       FullContact.serializer(),
-      FullContact.serializer())
+      CreateOrPatchContact.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as FullContact
@@ -139,7 +139,7 @@ class ContactApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       CreditCardAdded.serializer(),
-      CreditCardAdded.serializer())
+      CreditCard.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as CreditCardAdded
@@ -177,7 +177,7 @@ class ContactApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       CustomFieldMetaData.serializer(),
-      CustomFieldMetaData.serializer())
+      CreateRestCustomField.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as CustomFieldMetaData
@@ -254,7 +254,7 @@ class ContactApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       FullContact.serializer(),
-      FullContact.serializer())
+      UpsertContact.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as FullContact
@@ -656,7 +656,7 @@ class ContactApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       FullContact.serializer(),
-      FullContact.serializer())
+      CreateOrPatchContact.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as FullContact

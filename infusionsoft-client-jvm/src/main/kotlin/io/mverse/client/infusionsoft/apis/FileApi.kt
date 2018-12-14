@@ -49,7 +49,7 @@ class FileApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       FileInformation.serializer(),
-      FileInformation.serializer())
+      FileUpload.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as FileInformation
@@ -213,7 +213,7 @@ class FileApi(bearerToken:String, basePath: String = "https://api.infusionsoft.c
       localVariableConfig,
       requestBody, 
       FileInformation.serializer(),
-      FileInformation.serializer())
+      FileUpload.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as FileInformation

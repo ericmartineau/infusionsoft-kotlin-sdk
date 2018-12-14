@@ -50,7 +50,7 @@ class CompanyApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       Company.serializer(),
-      Company.serializer())
+      CreateOrPatchCompany.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Company
@@ -173,7 +173,7 @@ class CompanyApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       Company.serializer(),
-      Company.serializer())
+      CreateOrPatchCompany.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Company

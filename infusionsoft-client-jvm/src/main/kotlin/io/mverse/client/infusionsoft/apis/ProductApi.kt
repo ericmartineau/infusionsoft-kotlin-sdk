@@ -53,7 +53,7 @@ class ProductApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       Product.serializer(),
-      Product.serializer())
+      CreateProduct.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as Product
@@ -91,8 +91,7 @@ class ProductApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       UnitSerializer, 
-      
-      UnitSerializer)
+      CreateProductImage.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> Unit
@@ -131,7 +130,7 @@ class ProductApi(bearerToken:String, basePath: String = "https://api.infusionsof
       localVariableConfig,
       requestBody, 
       ProductSubscription.serializer(),
-      ProductSubscription.serializer())
+      CreateProductSubscription.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as ProductSubscription

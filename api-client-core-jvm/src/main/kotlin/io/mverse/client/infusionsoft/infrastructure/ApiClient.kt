@@ -101,8 +101,8 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
   }
 
   protected inline fun <reified R, reified T> request(requestConfig: RequestConfig, body: R? = null,
-                                           requestSerializer: KSerializer<R>,
-                                           responseParser: KSerializer<T>): ApiResponse<T?> {
+                                                      responseParser: KSerializer<T>,
+                                                      requestSerializer: KSerializer<R>): ApiResponse<T?> {
 
     val httpUrl = HttpUrl.parse(baseUrl)
         ?: throw IllegalStateException("baseUrl $baseUrl is invalid.")

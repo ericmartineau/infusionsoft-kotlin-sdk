@@ -49,7 +49,7 @@ class EmailAddressApi(bearerToken:String, basePath: String = "https://api.infusi
       localVariableConfig,
       requestBody, 
       RestEmailAddress.serializer(),
-      RestEmailAddress.serializer())
+      UpdateEmailAddress.serializer())
 
   return when (response.responseType) {
        ResponseType.Success -> (response as Success<*>).data as RestEmailAddress

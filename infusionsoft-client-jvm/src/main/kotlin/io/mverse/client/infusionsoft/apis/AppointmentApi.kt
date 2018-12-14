@@ -20,311 +20,277 @@ import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
 
 
+class AppointmentApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
+  /**
+   *  Create an Appointment
+   *  Creates a new appointment as the authenticated user
+   *  * @param appointment appointment 
+   *  * @return Appointment
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun createAppointment(appointment: Appointment) : Appointment {
+    val requestBody = appointment
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-    /**
-    * Create an Appointment
-    * Creates a new appointment as the authenticated user
-    * @param appointment appointment 
-    * @return Appointment
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun createAppointment(appointment: Appointment) : Appointment {
-       val requestBody = appointment
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val localVariableConfig = RequestConfig(
+       RequestMethod.POST,
+       "/appointments",
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      Appointment.serializer(),
+      Appointment.serializer())
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
-
-       val localVariableConfig = RequestConfig(
-           RequestMethod.POST,
-           "/appointments",
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           Appointment.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as Appointment
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as Appointment
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  Delete an Appointment
+   *  Deletes the specified appointment
+   *  * @param appointmentId appointmentId 
+   *  * @return void
+   */ 
+  fun deleteAppointment(appointmentId: Long) : Unit {
+    val requestBody = null
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-    /**
-    * Delete an Appointment
-    * Deletes the specified appointment
-    * @param appointmentId appointmentId 
-    * @return void
-    */
-    fun deleteAppointment(appointmentId: Long) : Unit {
-       val requestBody = null
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.DELETE,
+       "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      UnitSerializer, UnitSerializer)
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.DELETE,
-           "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           
-           UnitSerializer
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> Unit
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> Unit
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  Retrieve an Appointment
+   *  Retrieves a specific appointment with respect to user permissions. The authenticated user will need the \&quot;can view all records\&quot; permission for Task/Appt/Notes
+   *  * @param appointmentId appointmentId 
+   *  * @return Appointment
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun getAppointment(appointmentId: Long) : Appointment {
+    val requestBody = null
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-    /**
-    * Retrieve an Appointment
-    * Retrieves a specific appointment with respect to user permissions. The authenticated user will need the \&quot;can view all records\&quot; permission for Task/Appt/Notes
-    * @param appointmentId appointmentId 
-    * @return Appointment
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun getAppointment(appointmentId: Long) : Appointment {
-       val requestBody = null
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.GET,
+       "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      Appointment.serializer(),UnitSerializer)
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.GET,
-           "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           Appointment.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as Appointment
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as Appointment
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  List Appointments
+   *  Retrieves all appointments for the authenticated user
+   *  * @param since Date to start searching from ex. &#x60;2017-01-01T22:17:59.039Z&#x60; (optional)
+   *  * @param until Date to search to ex. &#x60;2017-01-01T22:17:59.039Z&#x60; (optional)
+   *  * @param limit Sets a total of items to return (optional)
+   *  * @param offset Sets a beginning range of items to return (optional)
+   *  * @param contactId Optionally find appointments with a contact (optional)
+   *  * @return AppointmentList
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun listAppointments(since: String? = null, until: String? = null, limit: Int? = null, offset: Int? = null, contactId: Long? = null) : AppointmentList {
+    val requestBody = null
+    val localVariableQuery: MultiValueMap = mutableMapOf()
+    if (since != null) localVariableQuery["since"] = listOf("$since")
+    if (until != null) localVariableQuery["until"] = listOf("$until")
+    if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+    if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+    if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
 
-    /**
-    * List Appointments
-    * Retrieves all appointments for the authenticated user
-    * @param since Date to start searching from ex. &#x60;2017-01-01T22:17:59.039Z&#x60; (optional)
-    * @param until Date to search to ex. &#x60;2017-01-01T22:17:59.039Z&#x60; (optional)
-    * @param limit Sets a total of items to return (optional)
-    * @param offset Sets a beginning range of items to return (optional)
-    * @param contactId Optionally find appointments with a contact (optional)
-    * @return AppointmentList
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun listAppointments(since: String? = null, until: String? = null, limit: Int? = null, offset: Int? = null, contactId: Long? = null) : AppointmentList {
-       val requestBody = null
-       val localVariableQuery: MultiValueMap = mutableMapOf()
-      if (since != null) localVariableQuery["since"] = listOf("$since")
-      if (until != null) localVariableQuery["until"] = listOf("$until")
-      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
-      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
-      if (contactId != null) localVariableQuery["contact_id"] = listOf("$contactId")
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.GET,
+       "/appointments",
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      AppointmentList.serializer(),UnitSerializer)
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.GET,
-           "/appointments",
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           AppointmentList.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as AppointmentList
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as AppointmentList
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  Retrieve Appointment Model
+   *  Get the custom fields for the Appointment object
+   *  * @return ObjectModel
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun retrieveAppointmentModel() : ObjectModel {
+    val requestBody = null
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-    /**
-    * Retrieve Appointment Model
-    * Get the custom fields for the Appointment object
-    * @return ObjectModel
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun retrieveAppointmentModel() : ObjectModel {
-       val requestBody = null
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.GET,
+       "/appointments/model",
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      ObjectModel.serializer(),UnitSerializer)
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.GET,
-           "/appointments/model",
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           ObjectModel.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as ObjectModel
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as ObjectModel
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  Replace an Appointment
+   *  Replaces all values of a given appointment
+   *  * @param appointmentId appointmentId 
+   *  * @param appointmentDTO appointmentDTO 
+   *  * @return Appointment
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun updateAppointment(appointmentId: Long, appointmentDTO: Appointment) : Appointment {
+    val requestBody = appointmentDTO
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-    /**
-    * Replace an Appointment
-    * Replaces all values of a given appointment
-    * @param appointmentId appointmentId 
-    * @param appointmentDTO appointmentDTO 
-    * @return Appointment
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun updateAppointment(appointmentId: Long, appointmentDTO: Appointment) : Appointment {
-       val requestBody = appointmentDTO
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.PUT,
+       "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      Appointment.serializer(),
+      Appointment.serializer())
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.PUT,
-           "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           Appointment.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as Appointment
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as Appointment
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  Update an Appointment
+   *  Updates the provided values of a given appointment
+   *  * @param appointmentId appointmentId 
+   *  * @param appointmentDTO appointmentDTO 
+   *  * @return Appointment
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun updatePropertiesOnAppointment(appointmentId: Long, appointmentDTO: Appointment) : Appointment {
+    val requestBody = appointmentDTO
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-    /**
-    * Update an Appointment
-    * Updates the provided values of a given appointment
-    * @param appointmentId appointmentId 
-    * @param appointmentDTO appointmentDTO 
-    * @return Appointment
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun updatePropertiesOnAppointment(appointmentId: Long, appointmentDTO: Appointment) : Appointment {
-       val requestBody = appointmentDTO
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.PATCH,
+       "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      Appointment.serializer(),
+      Appointment.serializer())
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.PATCH,
-           "/appointments/{appointmentId}".replace("{"+"appointmentId"+"}", "$appointmentId"),
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           Appointment.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as Appointment
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as Appointment
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
-
+  }
 }

@@ -1,9 +1,6 @@
 package io.mverse.client.infusionsoft.infrastructure
 
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.parse
-import kotlinx.serialization.stringify
 import okhttp3.HttpUrl
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -43,8 +40,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     val jsonHeaders: Map<String, String> = mapOf(ContentType to JsonMediaType, Accept to JsonMediaType)
   }
 
-  @UseExperimental(ImplicitReflectionSerializer::class)
-  protected inline fun <reified T : Any> requestBody(content: T?, mediaType: String = JsonMediaType): RequestBody {
+  protected inline fun <reified T> requestBody(content: T?, mediaType: String = JsonMediaType, serializer: KSerializer<T>): RequestBody {
     when {
       content is File -> return RequestBody.create(MediaType.parse(mediaType), content)
       mediaType == FormDataMediaType -> {
@@ -70,7 +66,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
           when (content) {
             null -> ""
             else -> {
-              json.stringify(content)
+              json.stringify(serializer, content)
             }
           }
       )
@@ -81,13 +77,13 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     TODO("requestBody currently only supports JSON body and File body.")
   }
 
-  protected inline fun <reified T> responseBody(response: Response, serializer: KSerializer<T>, mediaType: String = JsonMediaType): T? {
+  protected inline fun <reified T> responseBody(response: Response, serializer: KSerializer<T>): T? {
     val contentType = response.header("Content-Type") ?: JsonMediaType
     return when {
       response.body() == null -> null
       T::class == java.io.File::class -> downloadFileFromResponse(response) as T
       T::class == kotlin.Unit::class -> kotlin.Unit as T
-      contentType.isJsonMime() -> {
+      contentType.isJson -> {
         val inbound = response.body()?.string()
         when (inbound) {
           null -> null
@@ -99,12 +95,14 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     }
   }
 
-  fun String.isJsonMime(): Boolean {
+  val String?.isJson: Boolean get() {
     val jsonMime = "(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$"
     return this != null && (this.matches(jsonMime.toRegex()) || this == "*/*")
   }
 
-  protected inline fun <reified T> request(requestConfig: RequestConfig, body: Any? = null, serializer: KSerializer<T>): ApiInfrastructureResponse<T?> {
+  protected inline fun <reified R, reified T> request(requestConfig: RequestConfig, body: R? = null,
+                                           requestSerializer: KSerializer<R>,
+                                           responseParser: KSerializer<T>): ApiResponse<T?> {
 
     val httpUrl = HttpUrl.parse(baseUrl)
         ?: throw IllegalStateException("baseUrl $baseUrl is invalid.")
@@ -138,9 +136,9 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
       RequestMethod.DELETE -> Request.Builder().url(url).delete()
       RequestMethod.GET -> Request.Builder().url(url)
       RequestMethod.HEAD -> Request.Builder().url(url).head()
-      RequestMethod.PATCH -> Request.Builder().url(url).patch(requestBody(body, contentType))
-      RequestMethod.PUT -> Request.Builder().url(url).put(requestBody(body, contentType))
-      RequestMethod.POST -> Request.Builder().url(url).post(requestBody(body, contentType))
+      RequestMethod.PATCH -> Request.Builder().url(url).patch(requestBody(body, contentType, requestSerializer))
+      RequestMethod.PUT -> Request.Builder().url(url).put(requestBody(body, contentType, requestSerializer))
+      RequestMethod.POST -> Request.Builder().url(url).post(requestBody(body, contentType, requestSerializer))
       RequestMethod.OPTIONS -> Request.Builder().url(url).method("OPTIONS", null)
     }
 
@@ -161,7 +159,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
           response.headers().toMultimap()
       )
       response.isSuccessful -> return Success(
-          responseBody(response, serializer, accept),
+          responseBody(response, responseParser),
           response.code(),
           response.headers().toMultimap()
       )

@@ -20,99 +20,88 @@ import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
 
 
+class UsersApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
+  /**
+   *  Create a User
+   *  Creates a new user record. NB: Users will be invited to the application and remain in the \&quot;Invited\&quot; status until the user accepts the invite. \&quot;Inactive\&quot; users will not take up a user license.
+   *  * @param user user (optional)
+   *  * @return RestUser
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun createUser(user: CreateUser? = null) : RestUser {
+    val requestBody = user
+    val localVariableQuery: MultiValueMap = mutableMapOf()
 
-class UsersApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-    /**
-    * Create a User
-    * Creates a new user record. NB: Users will be invited to the application and remain in the \&quot;Invited\&quot; status until the user accepts the invite. \&quot;Inactive\&quot; users will not take up a user license.
-    * @param user user (optional)
-    * @return RestUser
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun createUser(user: CreateUser? = null) : RestUser {
-       val requestBody = user
-       val localVariableQuery: MultiValueMap = mutableMapOf()
+    val localVariableConfig = RequestConfig(
+       RequestMethod.POST,
+       "/users",
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      RestUser.serializer(),
+      RestUser.serializer())
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
-
-       val localVariableConfig = RequestConfig(
-           RequestMethod.POST,
-           "/users",
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           RestUser.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as RestUser
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as RestUser
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
+  }
+  /**
+   *  List Users
+   *  Retrieves a list of all users
+   *  * @param limit Sets a total of items to return (optional)
+   *  * @param offset Sets a beginning range of items to return (optional)
+   *  * @param includeInactive Include users that are Inactive in results, defaults to TRUE (optional)
+   *  * @param includePartners Include partner users in results, defaults to TRUE (optional)
+   *  * @return Users
+   */ 
+  @Suppress("UNCHECKED_CAST")
+  fun listUsers(limit: Int? = null, offset: Int? = null, includeInactive: Boolean? = null, includePartners: Boolean? = null) : Users {
+    val requestBody = null
+    val localVariableQuery: MultiValueMap = mutableMapOf()
+    if (limit != null) localVariableQuery["limit"] = listOf("$limit")
+    if (offset != null) localVariableQuery["offset"] = listOf("$offset")
+    if (includeInactive != null) localVariableQuery["include_inactive"] = listOf("$includeInactive")
+    if (includePartners != null) localVariableQuery["include_partners"] = listOf("$includePartners")
 
-    /**
-    * List Users
-    * Retrieves a list of all users
-    * @param limit Sets a total of items to return (optional)
-    * @param offset Sets a beginning range of items to return (optional)
-    * @param includeInactive Include users that are Inactive in results, defaults to TRUE (optional)
-    * @param includePartners Include partner users in results, defaults to TRUE (optional)
-    * @return Users
-    */
-    @Suppress("UNCHECKED_CAST")
-    fun listUsers(limit: Int? = null, offset: Int? = null, includeInactive: Boolean? = null, includePartners: Boolean? = null) : Users {
-       val requestBody = null
-       val localVariableQuery: MultiValueMap = mutableMapOf()
-      if (limit != null) localVariableQuery["limit"] = listOf("$limit")
-      if (offset != null) localVariableQuery["offset"] = listOf("$offset")
-      if (includeInactive != null) localVariableQuery["include_inactive"] = listOf("$includeInactive")
-      if (includePartners != null) localVariableQuery["include_partners"] = listOf("$includePartners")
+    val contentHeaders: Map<String, String> = mapOf()
+    val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
+    val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+    localVariableHeaders.putAll(contentHeaders)
+    localVariableHeaders.putAll(acceptsHeaders)
 
-       val contentHeaders: Map<String, String> = mapOf()
-       val acceptsHeaders: Map<String, String> = mapOf("Accept" to "application/json")
-       val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-       localVariableHeaders.putAll(contentHeaders)
-       localVariableHeaders.putAll(acceptsHeaders)
+    val localVariableConfig = RequestConfig(
+       RequestMethod.GET,
+       "/users",
+       query = localVariableQuery,
+       headers = localVariableHeaders
+    )
+    val response = request(
+      localVariableConfig,
+      requestBody, 
+      Users.serializer(),UnitSerializer)
 
-       val localVariableConfig = RequestConfig(
-           RequestMethod.GET,
-           "/users",
-           query = localVariableQuery,
-           headers = localVariableHeaders
-       )
-       val response = request(
-           localVariableConfig,
-           requestBody,
-           
-           
-           Users.serializer()
-           
-       )
-
-       return when (response.responseType) {
-           ResponseType.Success -> (response as Success<*>).data as Users
-           ResponseType.Informational -> TODO()
-           ResponseType.Redirection -> TODO()
-           ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-           ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-           else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
-       }
+  return when (response.responseType) {
+       ResponseType.Success -> (response as Success<*>).data as Users
+       ResponseType.Informational -> TODO()
+       ResponseType.Redirection -> TODO()
+       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
     }
-
+  }
 }

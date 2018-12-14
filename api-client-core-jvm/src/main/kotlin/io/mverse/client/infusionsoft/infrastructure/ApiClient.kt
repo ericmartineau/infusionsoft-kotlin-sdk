@@ -104,7 +104,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     return this != null && (this.matches(jsonMime.toRegex()) || this == "*/*")
   }
 
-  inline protected fun <reified T : Any> request(requestConfig: RequestConfig, body: Any? = null): ApiInfrastructureResponse<T?> {
+  protected inline fun <reified B: Any, reified T : Any> request(requestConfig: RequestConfig, body: B? = null): ApiInfrastructureResponse<T?> {
     val httpUrl = HttpUrl.parse(baseUrl)
         ?: throw IllegalStateException("baseUrl $baseUrl is invalid.")
 

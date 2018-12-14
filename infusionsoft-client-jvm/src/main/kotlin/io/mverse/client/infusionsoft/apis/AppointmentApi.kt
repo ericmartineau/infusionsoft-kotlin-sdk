@@ -17,6 +17,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.ObjectModel
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -43,9 +47,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Appointment, Appointment>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Appointment.serializer()
        )
 
        return when (response.responseType) {
@@ -80,9 +85,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -118,9 +124,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Appointment>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Appointment.serializer()
        )
 
        return when (response.responseType) {
@@ -165,9 +172,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, AppointmentList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           AppointmentList.serializer()
        )
 
        return when (response.responseType) {
@@ -202,9 +210,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -241,9 +250,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Appointment, Appointment>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Appointment.serializer()
        )
 
        return when (response.responseType) {
@@ -280,9 +290,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Appointment, Appointment>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Appointment.serializer()
        )
 
        return when (response.responseType) {

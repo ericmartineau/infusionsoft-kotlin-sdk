@@ -29,6 +29,10 @@ import io.mverse.client.infusionsoft.models.TagId
 import io.mverse.client.infusionsoft.models.UpsertContact
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -56,9 +60,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<TagId, List<EntryLongCommastring_>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EntryLongCommastring_.serializer().list
        )
 
        return when (response.responseType) {
@@ -94,9 +99,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateOrPatchContact, FullContact>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FullContact.serializer()
        )
 
        return when (response.responseType) {
@@ -133,9 +139,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreditCard, CreditCardAdded>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           CreditCardAdded.serializer()
        )
 
        return when (response.responseType) {
@@ -171,9 +178,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateRestCustomField, CustomFieldMetaData>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           CustomFieldMetaData.serializer()
        )
 
        return when (response.responseType) {
@@ -210,9 +218,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<EmailSentCreate, EmailSentCreate>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentCreate.serializer()
        )
 
        return when (response.responseType) {
@@ -248,9 +257,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<UpsertContact, FullContact>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FullContact.serializer()
        )
 
        return when (response.responseType) {
@@ -285,9 +295,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -325,9 +336,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, FullContact>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FullContact.serializer()
        )
 
        return when (response.responseType) {
@@ -367,9 +379,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ContactTagList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ContactTagList.serializer()
        )
 
        return when (response.responseType) {
@@ -422,9 +435,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ContactList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ContactList.serializer()
        )
 
        return when (response.responseType) {
@@ -460,9 +474,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, List<ContactCreditCard>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ContactCreditCard.serializer().list
        )
 
        return when (response.responseType) {
@@ -504,9 +519,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, EmailSentQueryResultList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentQueryResultList.serializer()
        )
 
        return when (response.responseType) {
@@ -543,9 +559,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -581,9 +598,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -618,9 +636,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -659,9 +678,10 @@ class ContactApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateOrPatchContact, FullContact>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FullContact.serializer()
        )
 
        return when (response.responseType) {

@@ -16,6 +16,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.ObjectModel
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class AffiliateApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -41,9 +45,10 @@ class AffiliateApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -88,9 +93,10 @@ class AffiliateApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, AffiliateCommissionList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           AffiliateCommissionList.serializer()
        )
 
        return when (response.responseType) {

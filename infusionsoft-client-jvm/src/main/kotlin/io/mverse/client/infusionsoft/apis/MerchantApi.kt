@@ -15,6 +15,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.RestMerchantAccountResponse
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class MerchantApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -40,9 +44,10 @@ class MerchantApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, RestMerchantAccountResponse>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestMerchantAccountResponse.serializer()
        )
 
        return when (response.responseType) {

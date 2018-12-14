@@ -17,6 +17,10 @@ import io.mverse.client.infusionsoft.models.FileList
 import io.mverse.client.infusionsoft.models.FileUpload
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -43,9 +47,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<FileUpload, FileInformation>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FileInformation.serializer()
        )
 
        return when (response.responseType) {
@@ -80,9 +85,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -120,9 +126,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, FileInformation>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FileInformation.serializer()
        )
 
        return when (response.responseType) {
@@ -171,9 +178,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, FileList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FileList.serializer()
        )
 
        return when (response.responseType) {
@@ -210,9 +218,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<FileUpload, FileInformation>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           FileInformation.serializer()
        )
 
        return when (response.responseType) {

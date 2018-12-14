@@ -15,6 +15,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.Setting
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class SettingApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -40,9 +44,10 @@ class SettingApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Setting>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Setting.serializer()
        )
 
        return when (response.responseType) {
@@ -77,9 +82,10 @@ class SettingApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Setting>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Setting.serializer()
        )
 
        return when (response.responseType) {

@@ -78,3 +78,14 @@ open class EnumStringSerializer<E:Enum<E>>(val type: KClass<E>): KSerializer<E> 
     output.encodeString(obj.toString())
   }
 }
+
+@Serializer(forClass = Unit::class)
+object UnitSerializer:KSerializer<Unit> {
+  override fun deserialize(input: Decoder) {
+    //Do nothing
+  }
+
+  override fun serialize(output: Encoder, obj: Unit) {
+    //Do nothing
+  }
+}

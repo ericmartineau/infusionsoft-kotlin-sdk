@@ -18,6 +18,10 @@ import io.mverse.client.infusionsoft.models.OpportunityList
 import io.mverse.client.infusionsoft.models.SalesPipeline
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -44,9 +48,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Opportunity, Opportunity>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Opportunity.serializer()
        )
 
        return when (response.responseType) {
@@ -84,9 +89,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Opportunity>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Opportunity.serializer()
        )
 
        return when (response.responseType) {
@@ -133,9 +139,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, OpportunityList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           OpportunityList.serializer()
        )
 
        return when (response.responseType) {
@@ -170,9 +177,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, List<SalesPipeline>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           SalesPipeline.serializer().list
        )
 
        return when (response.responseType) {
@@ -207,9 +215,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -245,9 +254,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Opportunity, Opportunity>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Opportunity.serializer()
        )
 
        return when (response.responseType) {
@@ -284,9 +294,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Opportunity, Opportunity>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Opportunity.serializer()
        )
 
        return when (response.responseType) {

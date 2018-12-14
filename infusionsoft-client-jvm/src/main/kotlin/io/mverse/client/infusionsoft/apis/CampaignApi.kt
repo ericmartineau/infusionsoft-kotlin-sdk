@@ -17,6 +17,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.SetOfIds
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -44,9 +48,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -84,9 +89,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<SetOfIds, Map<kotlin.String, String>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Map<kotlin.String, String>.serializer()
        )
 
        return when (response.responseType) {
@@ -124,9 +130,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Campaign>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Campaign.serializer()
        )
 
        return when (response.responseType) {
@@ -171,9 +178,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, CampaignList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           CampaignList.serializer()
        )
 
        return when (response.responseType) {
@@ -210,9 +218,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -249,9 +258,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<SetOfIds, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {

@@ -17,6 +17,10 @@ import io.mverse.client.infusionsoft.models.RestUser
 import io.mverse.client.infusionsoft.models.Users
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class UsersApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -43,9 +47,10 @@ class UsersApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateUser, RestUser>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestUser.serializer()
        )
 
        return when (response.responseType) {
@@ -88,9 +93,10 @@ class UsersApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Users>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Users.serializer()
        )
 
        return when (response.responseType) {

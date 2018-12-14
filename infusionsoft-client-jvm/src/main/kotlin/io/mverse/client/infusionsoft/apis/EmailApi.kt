@@ -20,6 +20,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.SetOfIds
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -46,9 +50,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<EmailSentCreate, EmailSentCreate>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentCreate.serializer()
        )
 
        return when (response.responseType) {
@@ -84,9 +89,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<EmailSentCreateList, EmailSentCreateList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentCreateList.serializer()
        )
 
        return when (response.responseType) {
@@ -121,9 +127,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -159,9 +166,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<SetOfIds, Map<kotlin.String, String>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Map<kotlin.String, String>.serializer()
        )
 
        return when (response.responseType) {
@@ -197,9 +205,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, EmailSentQueryResultWithContent>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentQueryResultWithContent.serializer()
        )
 
        return when (response.responseType) {
@@ -246,9 +255,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, EmailSentQueryResultList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentQueryResultList.serializer()
        )
 
        return when (response.responseType) {
@@ -283,9 +293,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<EmailSendRequest, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -322,9 +333,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<EmailSentCreate, EmailSentCreate>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EmailSentCreate.serializer()
        )
 
        return when (response.responseType) {

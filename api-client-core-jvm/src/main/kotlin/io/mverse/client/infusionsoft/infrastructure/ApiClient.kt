@@ -1,6 +1,7 @@
 package io.mverse.client.infusionsoft.infrastructure
 
 import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.parse
 import kotlinx.serialization.stringify
 import okhttp3.HttpUrl
@@ -81,7 +82,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
   }
 
   @UseExperimental(ImplicitReflectionSerializer::class)
-  protected inline fun <reified T : Any> responseBody(response: Response, mediaType: String = JsonMediaType): T? {
+  protected inline fun <reified T> responseBody(response: Response, serializer: KSerializer<T>, mediaType: String = JsonMediaType): T? {
     val contentType = response.header("Content-Type") ?: JsonMediaType
     return when {
       response.body() == null -> null
@@ -91,7 +92,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
         val inbound = response.body()?.string()
         when (inbound) {
           null -> null
-          else -> json.parse<T>(inbound)
+          else -> json.parse(serializer, inbound)
         }
       }
       contentType == String::class.java.name -> response.body().toString() as T
@@ -104,7 +105,8 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     return this != null && (this.matches(jsonMime.toRegex()) || this == "*/*")
   }
 
-  protected inline fun <reified B: Any, reified T : Any> request(requestConfig: RequestConfig, body: B? = null): ApiInfrastructureResponse<T?> {
+  protected inline fun <reified T> request(requestConfig: RequestConfig, body: Any? = null, serializer: KSerializer<T>): ApiInfrastructureResponse<T?> {
+
     val httpUrl = HttpUrl.parse(baseUrl)
         ?: throw IllegalStateException("baseUrl $baseUrl is invalid.")
 
@@ -160,7 +162,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
           response.headers().toMultimap()
       )
       response.isSuccessful -> return Success(
-          responseBody(response, accept),
+          responseBody(response, serializer, accept),
           response.code(),
           response.headers().toMultimap()
       )

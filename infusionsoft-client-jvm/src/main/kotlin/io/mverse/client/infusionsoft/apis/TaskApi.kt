@@ -17,6 +17,10 @@ import io.mverse.client.infusionsoft.models.Task
 import io.mverse.client.infusionsoft.models.TaskList
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -43,9 +47,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Task, Task>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Task.serializer()
        )
 
        return when (response.responseType) {
@@ -80,9 +85,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -118,9 +124,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Task>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Task.serializer()
        )
 
        return when (response.responseType) {
@@ -173,9 +180,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, TaskList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TaskList.serializer()
        )
 
        return when (response.responseType) {
@@ -228,9 +236,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, TaskList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TaskList.serializer()
        )
 
        return when (response.responseType) {
@@ -265,9 +274,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -304,9 +314,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Task, Task>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Task.serializer()
        )
 
        return when (response.responseType) {
@@ -343,9 +354,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Task, Task>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Task.serializer()
        )
 
        return when (response.responseType) {

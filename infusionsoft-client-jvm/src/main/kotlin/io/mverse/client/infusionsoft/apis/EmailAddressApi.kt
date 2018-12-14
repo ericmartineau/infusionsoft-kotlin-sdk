@@ -16,6 +16,10 @@ import io.mverse.client.infusionsoft.models.RestEmailAddress
 import io.mverse.client.infusionsoft.models.UpdateEmailAddress
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class EmailAddressApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -43,9 +47,10 @@ class EmailAddressApi(bearerToken:String, basePath: kotlin.String = "https://api
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<UpdateEmailAddress, RestEmailAddress>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestEmailAddress.serializer()
        )
 
        return when (response.responseType) {

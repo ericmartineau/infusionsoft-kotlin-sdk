@@ -15,6 +15,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.UserInfoDTO
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class UserInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -40,9 +44,10 @@ class UserInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, UserInfoDTO>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UserInfoDTO.serializer()
        )
 
        return when (response.responseType) {

@@ -18,6 +18,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.ObjectModel
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -44,9 +48,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateOrPatchCompany, Company>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Company.serializer()
        )
 
        return when (response.responseType) {
@@ -93,9 +98,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, CompanyList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           CompanyList.serializer()
        )
 
        return when (response.responseType) {
@@ -130,9 +136,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -169,9 +176,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateOrPatchCompany, Company>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Company.serializer()
        )
 
        return when (response.responseType) {

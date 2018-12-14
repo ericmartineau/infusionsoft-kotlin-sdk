@@ -16,6 +16,10 @@ import io.mverse.client.infusionsoft.models.RestHook
 import io.mverse.client.infusionsoft.models.RestHookRequest
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -42,9 +46,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<RestHookRequest, RestHook>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestHook.serializer()
        )
 
        return when (response.responseType) {
@@ -79,9 +84,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -116,9 +122,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, List<String>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           String.serializer().list
        )
 
        return when (response.responseType) {
@@ -153,9 +160,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, List<RestHook>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestHook.serializer().list
        )
 
        return when (response.responseType) {
@@ -191,9 +199,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, RestHook>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestHook.serializer()
        )
 
        return when (response.responseType) {
@@ -230,9 +239,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<RestHookRequest, RestHook>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestHook.serializer()
        )
 
        return when (response.responseType) {
@@ -268,9 +278,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, RestHook>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestHook.serializer()
        )
 
        return when (response.responseType) {
@@ -307,9 +318,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, RestHook>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           RestHook.serializer()
        )
 
        return when (response.responseType) {

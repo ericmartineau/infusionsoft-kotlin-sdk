@@ -16,6 +16,10 @@ import io.mverse.client.infusionsoft.models.Error
 import io.mverse.client.infusionsoft.models.ProvincesByCode
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class LocaleApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -41,9 +45,10 @@ class LocaleApi(bearerToken:String, basePath: kotlin.String = "https://api.infus
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, CountriesByCode>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           CountriesByCode.serializer()
        )
 
        return when (response.responseType) {
@@ -79,9 +84,10 @@ class LocaleApi(bearerToken:String, basePath: kotlin.String = "https://api.infus
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ProvincesByCode>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ProvincesByCode.serializer()
        )
 
        return when (response.responseType) {

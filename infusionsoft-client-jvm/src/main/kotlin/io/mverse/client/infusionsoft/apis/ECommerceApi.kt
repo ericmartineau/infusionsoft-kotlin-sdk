@@ -26,6 +26,10 @@ import io.mverse.client.infusionsoft.models.Transaction
 import io.mverse.client.infusionsoft.models.TransactionList
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -52,9 +56,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateOrder, Order>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Order.serializer()
        )
 
        return when (response.responseType) {
@@ -91,9 +96,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateOrderItem, OrderItem>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           OrderItem.serializer()
        )
 
        return when (response.responseType) {
@@ -130,9 +136,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreatePayment, PaymentResult>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           PaymentResult.serializer()
        )
 
        return when (response.responseType) {
@@ -167,9 +174,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -205,9 +213,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -243,9 +252,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Order>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Order.serializer()
        )
 
        return when (response.responseType) {
@@ -281,9 +291,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Transaction>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Transaction.serializer()
        )
 
        return when (response.responseType) {
@@ -334,9 +345,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, OrderList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           OrderList.serializer()
        )
 
        return when (response.responseType) {
@@ -377,9 +389,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, SubscriptionList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           SubscriptionList.serializer()
        )
 
        return when (response.responseType) {
@@ -424,9 +437,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, TransactionList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TransactionList.serializer()
        )
 
        return when (response.responseType) {
@@ -472,9 +486,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, TransactionList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TransactionList.serializer()
        )
 
        return when (response.responseType) {
@@ -511,9 +526,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<PaymentPlan, PaymentPlan>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           PaymentPlan.serializer()
        )
 
        return when (response.responseType) {
@@ -548,9 +564,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {
@@ -585,9 +602,10 @@ class ECommerceApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ObjectModel>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ObjectModel.serializer()
        )
 
        return when (response.responseType) {

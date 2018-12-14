@@ -23,6 +23,10 @@ import io.mverse.client.infusionsoft.models.TaggedContactList
 import io.mverse.client.infusionsoft.models.Tags
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -50,9 +54,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<SetOfIds, List<EntryLongCommastring_>>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           EntryLongCommastring_.serializer().list
        )
 
        return when (response.responseType) {
@@ -88,9 +93,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateTag, Tag>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Tag.serializer()
        )
 
        return when (response.responseType) {
@@ -126,9 +132,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateTagCategory, TagCategory>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TagCategory.serializer()
        )
 
        return when (response.responseType) {
@@ -164,9 +171,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Tag>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Tag.serializer()
        )
 
        return when (response.responseType) {
@@ -206,9 +214,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, TaggedCompanyList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TaggedCompanyList.serializer()
        )
 
        return when (response.responseType) {
@@ -248,9 +257,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, TaggedContactList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           TaggedContactList.serializer()
        )
 
        return when (response.responseType) {
@@ -293,9 +303,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Tags>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Tags.serializer()
        )
 
        return when (response.responseType) {
@@ -331,9 +342,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -370,9 +382,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {

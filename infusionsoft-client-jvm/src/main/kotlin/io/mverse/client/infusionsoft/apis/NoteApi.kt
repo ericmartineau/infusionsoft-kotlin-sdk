@@ -18,6 +18,10 @@ import io.mverse.client.infusionsoft.models.RequestNote
 import io.mverse.client.infusionsoft.models.UpdateNote
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -44,9 +48,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<RequestNote, Note>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Note.serializer()
        )
 
        return when (response.responseType) {
@@ -81,9 +86,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -119,9 +125,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Note>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Note.serializer()
        )
 
        return when (response.responseType) {
@@ -164,9 +171,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, NoteList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           NoteList.serializer()
        )
 
        return when (response.responseType) {
@@ -203,9 +211,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<RequestNote, Note>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Note.serializer()
        )
 
        return when (response.responseType) {
@@ -242,9 +251,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<UpdateNote, Note>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Note.serializer()
        )
 
        return when (response.responseType) {

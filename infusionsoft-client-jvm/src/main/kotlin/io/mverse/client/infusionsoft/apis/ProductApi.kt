@@ -21,6 +21,10 @@ import io.mverse.client.infusionsoft.models.ProductStatusList
 import io.mverse.client.infusionsoft.models.ProductSubscription
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -47,9 +51,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateProduct, Product>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Product.serializer()
        )
 
        return when (response.responseType) {
@@ -85,9 +90,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateProductImage, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -124,9 +130,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<CreateProductSubscription, ProductSubscription>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ProductSubscription.serializer()
        )
 
        return when (response.responseType) {
@@ -161,9 +168,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -198,9 +206,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -236,9 +245,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Unit>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           UnitSerializer
        )
 
        return when (response.responseType) {
@@ -279,9 +289,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ProductList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ProductList.serializer()
        )
 
        return when (response.responseType) {
@@ -322,9 +333,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ProductStatusList>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ProductStatusList.serializer()
        )
 
        return when (response.responseType) {
@@ -360,9 +372,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, Product>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           Product.serializer()
        )
 
        return when (response.responseType) {
@@ -399,9 +412,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, ProductSubscription>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           ProductSubscription.serializer()
        )
 
        return when (response.responseType) {

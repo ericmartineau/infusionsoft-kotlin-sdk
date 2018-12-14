@@ -15,6 +15,10 @@ import io.mverse.client.infusionsoft.models.AccountProfile
 import io.mverse.client.infusionsoft.models.Error
 
 import io.mverse.client.infusionsoft.infrastructure.*
+import kotlinx.serialization.*
+
+
+
 
 class AccountInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
 
@@ -40,9 +44,10 @@ class AccountInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<Any, AccountProfile>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           AccountProfile.serializer()
        )
 
        return when (response.responseType) {
@@ -78,9 +83,10 @@ class AccountInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.
            query = localVariableQuery,
            headers = localVariableHeaders
        )
-       val response = request<AccountProfile, AccountProfile>(
+       val response = request(
            localVariableConfig,
-           requestBody
+           requestBody,
+           AccountProfile.serializer()
        )
 
        return when (response.responseType) {

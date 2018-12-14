@@ -48,7 +48,10 @@ class LocaleApi(bearerToken:String, basePath: kotlin.String = "https://api.infus
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            CountriesByCode.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -87,7 +90,10 @@ class LocaleApi(bearerToken:String, basePath: kotlin.String = "https://api.infus
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ProvincesByCode.serializer()
+           
        )
 
        return when (response.responseType) {

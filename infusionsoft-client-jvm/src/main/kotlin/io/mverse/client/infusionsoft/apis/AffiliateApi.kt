@@ -48,7 +48,10 @@ class AffiliateApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ObjectModel.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -96,7 +99,10 @@ class AffiliateApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            AffiliateCommissionList.serializer()
+           
        )
 
        return when (response.responseType) {

@@ -81,7 +81,6 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     TODO("requestBody currently only supports JSON body and File body.")
   }
 
-  @UseExperimental(ImplicitReflectionSerializer::class)
   protected inline fun <reified T> responseBody(response: Response, serializer: KSerializer<T>, mediaType: String = JsonMediaType): T? {
     val contentType = response.header("Content-Type") ?: JsonMediaType
     return when {

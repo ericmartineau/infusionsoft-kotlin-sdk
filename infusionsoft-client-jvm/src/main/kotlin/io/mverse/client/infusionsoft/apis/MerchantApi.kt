@@ -47,7 +47,10 @@ class MerchantApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestMerchantAccountResponse.serializer()
+           
        )
 
        return when (response.responseType) {

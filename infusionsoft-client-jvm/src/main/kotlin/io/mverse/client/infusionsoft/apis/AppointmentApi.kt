@@ -50,7 +50,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Appointment.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -88,6 +91,9 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -127,7 +133,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Appointment.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -175,7 +184,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            AppointmentList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -213,7 +225,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ObjectModel.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -253,7 +268,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Appointment.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -293,7 +311,10 @@ class AppointmentApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Appointment.serializer()
+           
        )
 
        return when (response.responseType) {

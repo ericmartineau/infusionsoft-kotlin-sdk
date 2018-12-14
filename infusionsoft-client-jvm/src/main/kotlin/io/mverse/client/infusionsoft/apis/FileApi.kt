@@ -50,7 +50,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            FileInformation.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -88,6 +91,9 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -129,7 +135,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            FileInformation.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -181,7 +190,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            FileList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -221,7 +233,10 @@ class FileApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            FileInformation.serializer()
+           
        )
 
        return when (response.responseType) {

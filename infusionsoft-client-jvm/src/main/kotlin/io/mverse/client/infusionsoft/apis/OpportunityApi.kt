@@ -51,7 +51,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Opportunity.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -92,7 +95,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Opportunity.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -142,7 +148,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            OpportunityList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -181,6 +190,9 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
            localVariableConfig,
            requestBody,
            SalesPipeline.serializer().list
+           
+           
+           
        )
 
        return when (response.responseType) {
@@ -218,7 +230,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ObjectModel.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -257,7 +272,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Opportunity.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -297,7 +315,10 @@ class OpportunityApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Opportunity.serializer()
+           
        )
 
        return when (response.responseType) {

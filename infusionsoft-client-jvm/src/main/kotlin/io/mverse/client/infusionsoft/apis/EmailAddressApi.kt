@@ -50,7 +50,10 @@ class EmailAddressApi(bearerToken:String, basePath: kotlin.String = "https://api
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestEmailAddress.serializer()
+           
        )
 
        return when (response.responseType) {

@@ -47,7 +47,10 @@ class SettingApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Setting.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -85,7 +88,10 @@ class SettingApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Setting.serializer()
+           
        )
 
        return when (response.responseType) {

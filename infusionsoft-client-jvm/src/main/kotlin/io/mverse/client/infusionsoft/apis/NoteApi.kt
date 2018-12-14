@@ -51,7 +51,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Note.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -89,6 +92,9 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -128,7 +134,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Note.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -174,7 +183,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            NoteList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -214,7 +226,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Note.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -254,7 +269,10 @@ class NoteApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Note.serializer()
+           
        )
 
        return when (response.responseType) {

@@ -47,7 +47,10 @@ class UserInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            UserInfoDTO.serializer()
+           
        )
 
        return when (response.responseType) {

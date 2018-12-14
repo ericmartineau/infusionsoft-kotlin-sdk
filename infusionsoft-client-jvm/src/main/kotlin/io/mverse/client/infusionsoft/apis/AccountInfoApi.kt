@@ -47,7 +47,10 @@ class AccountInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            AccountProfile.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -86,7 +89,10 @@ class AccountInfoApi(bearerToken:String, basePath: kotlin.String = "https://api.
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            AccountProfile.serializer()
+           
        )
 
        return when (response.responseType) {

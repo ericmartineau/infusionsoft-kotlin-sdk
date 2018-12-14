@@ -50,7 +50,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Task.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -88,6 +91,9 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -127,7 +133,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Task.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -183,7 +192,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            TaskList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -239,7 +251,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            TaskList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -277,7 +292,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ObjectModel.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -317,7 +335,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Task.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -357,7 +378,10 @@ class TaskApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Task.serializer()
+           
        )
 
        return when (response.responseType) {

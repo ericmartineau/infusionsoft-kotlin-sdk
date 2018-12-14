@@ -53,7 +53,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            EmailSentCreate.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -92,7 +95,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            EmailSentCreateList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -130,6 +136,9 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -169,7 +178,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
-           Map<kotlin.String, String>.serializer()
+           
+           (String.serializer() to String.serializer()).map
+           
+           
        )
 
        return when (response.responseType) {
@@ -208,7 +220,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            EmailSentQueryResultWithContent.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -258,7 +273,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            EmailSentQueryResultList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -296,6 +314,9 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -336,7 +357,10 @@ class EmailApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            EmailSentCreate.serializer()
+           
        )
 
        return when (response.responseType) {

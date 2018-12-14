@@ -58,6 +58,9 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
            localVariableConfig,
            requestBody,
            EntryLongCommastring_.serializer().list
+           
+           
+           
        )
 
        return when (response.responseType) {
@@ -96,7 +99,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Tag.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -135,7 +141,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            TagCategory.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -174,7 +183,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Tag.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -217,7 +229,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            TaggedCompanyList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -260,7 +275,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            TaggedContactList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -306,7 +324,10 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Tags.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -345,6 +366,9 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -385,6 +409,9 @@ class TagsApi(bearerToken:String, basePath: kotlin.String = "https://api.infusio
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 

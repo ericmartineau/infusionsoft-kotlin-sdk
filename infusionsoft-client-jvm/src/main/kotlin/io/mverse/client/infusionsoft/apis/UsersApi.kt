@@ -50,7 +50,10 @@ class UsersApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestUser.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -96,7 +99,10 @@ class UsersApi(bearerToken:String, basePath: kotlin.String = "https://api.infusi
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Users.serializer()
+           
        )
 
        return when (response.responseType) {

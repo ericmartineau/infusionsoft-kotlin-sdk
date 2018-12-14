@@ -51,6 +51,9 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -92,7 +95,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
-           Map<kotlin.String, String>.serializer()
+           
+           (String.serializer() to String.serializer()).map
+           
+           
        )
 
        return when (response.responseType) {
@@ -133,7 +139,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Campaign.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -181,7 +190,10 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            CampaignList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -221,6 +233,9 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -261,6 +276,9 @@ class CampaignApi(bearerToken:String, basePath: kotlin.String = "https://api.inf
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 

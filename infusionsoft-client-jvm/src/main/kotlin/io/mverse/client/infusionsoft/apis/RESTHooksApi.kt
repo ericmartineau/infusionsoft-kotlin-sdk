@@ -49,7 +49,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestHook.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -87,6 +90,9 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -126,6 +132,9 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            localVariableConfig,
            requestBody,
            String.serializer().list
+           
+           
+           
        )
 
        return when (response.responseType) {
@@ -164,6 +173,9 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
            localVariableConfig,
            requestBody,
            RestHook.serializer().list
+           
+           
+           
        )
 
        return when (response.responseType) {
@@ -202,7 +214,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestHook.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -242,7 +257,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestHook.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -281,7 +299,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestHook.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -321,7 +342,10 @@ class RESTHooksApi(bearerToken:String, basePath: kotlin.String = "https://api.in
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            RestHook.serializer()
+           
        )
 
        return when (response.responseType) {

@@ -51,7 +51,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Company.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -101,7 +104,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            CompanyList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -139,7 +145,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ObjectModel.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -179,7 +188,10 @@ class CompanyApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Company.serializer()
+           
        )
 
        return when (response.responseType) {

@@ -54,7 +54,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Product.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -93,6 +96,9 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -133,7 +139,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ProductSubscription.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -171,6 +180,9 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -209,6 +221,9 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -248,6 +263,9 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
+           
            UnitSerializer
        )
 
@@ -292,7 +310,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ProductList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -336,7 +357,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ProductStatusList.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -375,7 +399,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            Product.serializer()
+           
        )
 
        return when (response.responseType) {
@@ -415,7 +442,10 @@ class ProductApi(bearerToken:String, basePath: kotlin.String = "https://api.infu
        val response = request(
            localVariableConfig,
            requestBody,
+           
+           
            ProductSubscription.serializer()
+           
        )
 
        return when (response.responseType) {

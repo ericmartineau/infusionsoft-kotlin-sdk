@@ -39,3 +39,5 @@ pluginManagement {
 }
 
 rootProject.name = 'infusionsoft-client'
+include "api-client-core-jvm"
+include "infusionsoft-client-jvm"

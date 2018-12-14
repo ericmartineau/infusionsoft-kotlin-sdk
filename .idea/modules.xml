@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-client-core-jvm/io.mverse.api-client-core-jvm.iml" filepath="$PROJECT_DIR$/.idea/modules/api-client-core-jvm/io.mverse.api-client-core-jvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-client-core-jvm/io.mverse.api-client-core-jvm.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api-client-core-jvm/io.mverse.api-client-core-jvm.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-client-core-jvm/io.mverse.api-client-core-jvm.test.iml" filepath="$PROJECT_DIR$/.idea/modules/api-client-core-jvm/io.mverse.api-client-core-jvm.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.mverse.infusionsoft-client.iml" filepath="$PROJECT_DIR$/.idea/modules/io.mverse.infusionsoft-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infusionsoft-client-jvm/io.mverse.infusionsoft-client-jvm.iml" filepath="$PROJECT_DIR$/.idea/modules/infusionsoft-client-jvm/io.mverse.infusionsoft-client-jvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infusionsoft-client-jvm/io.mverse.infusionsoft-client-jvm.main.iml" filepath="$PROJECT_DIR$/.idea/modules/infusionsoft-client-jvm/io.mverse.infusionsoft-client-jvm.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infusionsoft-client-jvm/io.mverse.infusionsoft-client-jvm.test.iml" filepath="$PROJECT_DIR$/.idea/modules/infusionsoft-client-jvm/io.mverse.infusionsoft-client-jvm.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.mverse.infusionsoft-client.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.mverse.infusionsoft-client.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.mverse.infusionsoft-client.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.mverse.infusionsoft-client.test.iml" />
     </modules>

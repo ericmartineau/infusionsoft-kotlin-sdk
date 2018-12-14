@@ -2,6 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="io.mverse.api-client-core-jvm.main" target="1.8" />
+      <module name="io.mverse.api-client-core-jvm.test" target="1.8" />
+      <module name="io.mverse.infusionsoft-client-core-jvm.main" target="1.8" />
+      <module name="io.mverse.infusionsoft-client-core-jvm.test" target="1.8" />
+      <module name="io.mverse.infusionsoft-client-jvm.main" target="1.8" />
+      <module name="io.mverse.infusionsoft-client-jvm.test" target="1.8" />
+      <module name="io.mverse.infusionsoft-client-sdk-jvm.main" target="1.8" />
+      <module name="io.mverse.infusionsoft-client-sdk-jvm.test" target="1.8" />
       <module name="io.mverse.infusionsoft-client.main" target="1.8" />
       <module name="io.mverse.infusionsoft-client.test" target="1.8" />
     </bytecodeTargetLevel>

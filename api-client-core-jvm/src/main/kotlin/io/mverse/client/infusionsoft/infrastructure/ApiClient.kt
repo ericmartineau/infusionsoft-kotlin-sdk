@@ -65,9 +65,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
           MediaType.parse(mediaType),
           when (content) {
             null -> ""
-            else -> {
-              json.stringify(serializer, content)
-            }
+            else -> json.stringify(serializer, content)
           }
       )
       mediaType == XmlMediaType -> TODO("xml not currently supported.")

@@ -40,7 +40,7 @@ val apiInstance = ContactApi()
 val contactId : Long = 789 // Long | contactId
 val tagIds : TagId =  // TagId | tagIds
 try {
-    val result : List<EntryLongCommastring_> = apiInstance.applyTagsToContactId(contactId, tagIds)
+    val result : Map<String, String> = apiInstance.applyTagsToContactId(contactId, tagIds)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContactApi#applyTagsToContactId")

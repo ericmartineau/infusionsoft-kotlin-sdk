@@ -20,6 +20,11 @@ allprojects {
 
   dependencyManagement {
     dependencies {
+
+      // Google Gson library
+      dependency("com.google.code.gson:gson:2.8.5")
+
+
       dependencySet("org.jetbrains.kotlin:1.3.10") {
         entry("kotlin-stdlib")
         entry("kotlin-runtime")

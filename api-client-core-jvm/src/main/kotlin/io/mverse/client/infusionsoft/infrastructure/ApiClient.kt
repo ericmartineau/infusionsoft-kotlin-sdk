@@ -1,5 +1,9 @@
 package io.mverse.client.infusionsoft.infrastructure
 
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.FieldNamingPolicy.*
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import kotlinx.serialization.KSerializer
 import okhttp3.HttpUrl
 import okhttp3.MediaType
@@ -12,11 +16,14 @@ import java.io.File
 import java.io.IOException
 import java.util.regex.Pattern
 
-open class ApiClient(val baseUrl: String, bearerToken: String) {
+open class ApiClient(val baseUrl: String, val gson: Gson = defaultGson, bearerToken: String) {
 
   val authHeaders: Map<String, String> = mapOf("Authorization" to "Bearer $bearerToken")
 
   companion object {
+    val defaultGson:Gson = GsonBuilder()
+        .setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES)
+        .create()
 
     val fileNamePattern = Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?")
     protected const val ContentType = "Content-Type"
@@ -40,7 +47,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
     val jsonHeaders: Map<String, String> = mapOf(ContentType to JsonMediaType, Accept to JsonMediaType)
   }
 
-  protected inline fun <reified T> requestBody(content: T?, mediaType: String = JsonMediaType, serializer: KSerializer<T>): RequestBody {
+  protected fun <T> requestBody(content: T?, mediaType: String = JsonMediaType, serializer: KSerializer<T>): RequestBody {
     when {
       content is File -> return RequestBody.create(MediaType.parse(mediaType), content)
       mediaType == FormDataMediaType -> {
@@ -65,7 +72,7 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
           MediaType.parse(mediaType),
           when (content) {
             null -> ""
-            else -> json.stringify(serializer, content)
+            else -> gson.toJson(content)
           }
       )
       mediaType == XmlMediaType -> TODO("xml not currently supported.")
@@ -85,11 +92,10 @@ open class ApiClient(val baseUrl: String, bearerToken: String) {
         val inbound = response.body()?.string()
         when (inbound) {
           null -> null
-          else -> json.parse(serializer, inbound)
+          else -> gson.fromJson(inbound, T::class.java)
         }
       }
-      contentType == String::class.java.name -> response.body().toString() as T
-      else -> TODO("Unknown response type")
+      else -> illegalState("Unknown response type")
     }
   }
 

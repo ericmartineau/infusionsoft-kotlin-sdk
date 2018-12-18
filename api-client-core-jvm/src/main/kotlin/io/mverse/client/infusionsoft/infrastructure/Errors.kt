@@ -1,42 +1,45 @@
 @file:Suppress("unused")
-package io.mverse.client.infusionsoft.infrastructure
 
-import java.lang.RuntimeException
+package io.mverse.client.infusionsoft.infrastructure
 
 open class ClientException : RuntimeException {
 
-    /**
-     * Constructs an [ClientException] with no detail message.
-     */
-    constructor() : super()
+  /**
+   * Constructs an [ClientException] with no detail message.
+   */
+  constructor() : super()
 
-    /**
-     * Constructs an [ClientException] with the specified detail message.
+  /**
+   * Constructs an [ClientException] with the specified detail message.
 
-     * @param   message   the detail message.
-     */
-    constructor(message: kotlin.String) : super(message)
+   * @param   message   the detail message.
+   */
+  constructor(message: kotlin.String) : super(message)
 
-    companion object {
-        private const val serialVersionUID: Long = 123L
-    }
+  companion object {
+    private const val serialVersionUID: Long = 123L
+  }
 }
 
 open class ServerException : RuntimeException {
 
-    /**
-     * Constructs an [ServerException] with no detail message.
-     */
-    constructor() : super()
+  /**
+   * Constructs an [ServerException] with no detail message.
+   */
+  constructor() : super()
 
-    /**
-     * Constructs an [ServerException] with the specified detail message.
+  /**
+   * Constructs an [ServerException] with the specified detail message.
 
-     * @param   message   the detail message.
-     */
-    constructor(message: kotlin.String) : super(message)
+   * @param   message   the detail message.
+   */
+  constructor(message: kotlin.String) : super(message)
 
-    companion object {
-        private const val serialVersionUID: Long = 456L
-    }
+  companion object {
+    private const val serialVersionUID: Long = 456L
+  }
+}
+
+fun illegalState(msg: String): Nothing {
+  throw IllegalStateException(msg)
 }

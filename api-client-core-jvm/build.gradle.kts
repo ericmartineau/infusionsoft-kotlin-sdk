@@ -3,6 +3,14 @@ plugins {
   id("org.jetbrains.kotlin.jvm")
 }
 
+mverse {
+  dependencies {
+    compile(kotlinStdlib())
+    compile("kotlin-reflect")
+    compile("gson")
+  }
+}
+
 dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.10")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.10")

@@ -22,6 +22,7 @@ import io.mverse.client.infusionsoft.models.SetOfIds
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
@@ -49,14 +50,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<EmailSentCreate>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as EmailSentCreate
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<EmailSentCreate>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -83,14 +84,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<EmailSentCreateList>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as EmailSentCreateList
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<EmailSentCreateList>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -116,14 +117,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -150,14 +151,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Map<kotlin.String, String>>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Map<kotlin.String, String>
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Map<kotlin.String, String>>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -184,14 +185,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<EmailSentQueryResultWithContent>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as EmailSentQueryResultWithContent
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<EmailSentQueryResultWithContent>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -229,14 +230,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<EmailSentQueryResultList>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as EmailSentQueryResultList
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<EmailSentQueryResultList>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -262,14 +263,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -297,14 +298,14 @@ class EmailApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(bas
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<EmailSentCreate>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as EmailSentCreate
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<EmailSentCreate>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }

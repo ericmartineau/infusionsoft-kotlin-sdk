@@ -25,6 +25,7 @@ import io.mverse.client.infusionsoft.models.Tags
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
@@ -53,14 +54,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<List<EntryLongCommastring_>>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as List<EntryLongCommastring_>
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<List<EntryLongCommastring_>>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -87,14 +88,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Tag>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Tag
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Tag>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -121,14 +122,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<TagCategory>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as TagCategory
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<TagCategory>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -155,14 +156,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Tag>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Tag
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Tag>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -193,14 +194,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<TaggedCompanyList>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as TaggedCompanyList
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<TaggedCompanyList>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -231,14 +232,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<TaggedContactList>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as TaggedContactList
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<TaggedContactList>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -272,14 +273,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Tags>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Tags
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Tags>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -306,14 +307,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -341,14 +342,14 @@ class TagsApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }

@@ -20,6 +20,7 @@ import io.mverse.client.infusionsoft.models.SalesPipeline
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
@@ -47,14 +48,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Opportunity>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Opportunity
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Opportunity>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -83,14 +84,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Opportunity>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Opportunity
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Opportunity>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -128,14 +129,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<OpportunityList>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as OpportunityList
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<OpportunityList>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -161,14 +162,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<List<SalesPipeline>>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as List<SalesPipeline>
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<List<SalesPipeline>>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -194,14 +195,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<ObjectModel>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as ObjectModel
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<ObjectModel>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -228,14 +229,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Opportunity>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Opportunity
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Opportunity>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -263,14 +264,14 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Opportunity>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Opportunity
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Opportunity>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }

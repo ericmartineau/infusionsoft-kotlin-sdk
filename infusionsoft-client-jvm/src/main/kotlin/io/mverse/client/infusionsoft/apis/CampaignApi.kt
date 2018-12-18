@@ -19,6 +19,7 @@ import io.mverse.client.infusionsoft.models.SetOfIds
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
@@ -47,14 +48,14 @@ class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -83,14 +84,14 @@ class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Map<kotlin.String, String>>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Map<kotlin.String, String>
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Map<kotlin.String, String>>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -119,14 +120,14 @@ class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Campaign>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Campaign
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Campaign>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -162,14 +163,14 @@ class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<CampaignList>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as CampaignList
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<CampaignList>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -197,14 +198,14 @@ class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
@@ -232,14 +233,14 @@ class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request<Unit>(localVariableConfig, requestBody)
+    val response = request(localVariableConfig, requestBody)
 
     return when (response) {
-      is Success<*> -> response.data as Unit
-      is Informational<*> -> TODO()
-      is Redirection<*> -> TODO()
-      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
-      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      is Success -> gson.fromJson(response.data, object : TypeToken<Unit>() {}.type)
+      is Informational -> TODO()
+      is Redirection -> TODO()
+      is ClientError -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError -> throw ServerException(response.message ?: "Server error")
       else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }

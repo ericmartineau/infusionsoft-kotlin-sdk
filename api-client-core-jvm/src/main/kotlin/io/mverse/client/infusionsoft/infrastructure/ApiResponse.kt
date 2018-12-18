@@ -4,37 +4,37 @@ enum class ResponseType {
     Success, Informational, Redirection, ClientError, ServerError
 }
 
-sealed class ApiResponse<T>(val responseType: ResponseType) {
+sealed class ApiResponse(val responseType: ResponseType) {
     abstract val statusCode: Int
     abstract val headers: Map<String, List<String>>
 }
 
-class Success<T>(
-        val data: T,
+class Success(
+        val data: String?,
         override val statusCode: Int = -1,
         override val headers: Map<String, List<String>> = mapOf()
-): ApiResponse<T>(ResponseType.Success)
+): ApiResponse(ResponseType.Success)
 
-class Informational<T>(
+class Informational(
         val statusText: String,
         override val statusCode: Int = -1,
         override val headers: Map<String, List<String>> = mapOf()
-) : ApiResponse<T>(ResponseType.Informational)
+) : ApiResponse(ResponseType.Informational)
 
-class Redirection<T>(
+class Redirection(
         override val statusCode: Int = -1,
         override val headers: Map<String, List<String>> = mapOf()
-) : ApiResponse<T>(ResponseType.Redirection)
+) : ApiResponse(ResponseType.Redirection)
 
-class ClientError<T>(
+class ClientError(
         val body: Any? = null,
         override val statusCode: Int = -1,
         override val headers: Map<String, List<String>> = mapOf()
-) : ApiResponse<T>(ResponseType.ClientError)
+) : ApiResponse(ResponseType.ClientError)
 
-class ServerError<T>(
+class ServerError(
         val message: String? = null,
         val body: Any? = null,
         override val statusCode: Int = -1,
         override val headers: Map<String, List<String>>
-): ApiResponse<T>(ResponseType.ServerError)
+): ApiResponse(ResponseType.ServerError)

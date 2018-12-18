@@ -66,27 +66,16 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
     illegalState("requestBody currently only supports JSON body and File body.")
   }
 
-  protected inline fun <reified T> responseBody(response: Response): T {
-    val contentType = response.header("Content-Type") ?: JsonMediaType
-    val responseBody = response.body() ?: throw NullPointerException("Unable to convert null response to ${T::class.java}")
-    return when {
-      T::class == java.io.File::class -> downloadFileFromResponse(response) as T
-      T::class == kotlin.Unit::class -> kotlin.Unit as T
-      contentType.isJson -> gson.fromJson(responseBody.string(), T::class.java)
-      else -> illegalState("Unknown response type")
-    }
-  }
-
   val String?.isJson: Boolean get() {
     val jsonMime = "(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$"
     return this != null && (this.matches(jsonMime.toRegex()) || this == "*/*")
   }
 
-  protected inline fun <reified T:Any> request(requestConfig: RequestConfig): ApiResponse<T> {
+  protected fun request(requestConfig: RequestConfig): ApiResponse {
     return request(requestConfig, null)
   }
 
-  protected inline fun <reified T:Any> request(requestConfig: RequestConfig, body: Any?): ApiResponse<T> {
+  protected fun request(requestConfig: RequestConfig, body: Any?): ApiResponse {
 
     val httpUrl = HttpUrl.parse(basePath)
         ?: throw IllegalStateException("baseUrl $basePath is invalid.")
@@ -114,7 +103,6 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
     // TODO: support multiple contentType,accept options here.
     val contentType = (headers[ContentType])?.substringBefore(";")?.toLowerCase()
         ?: "application/json"
-    val accept = (headers[Accept])?.substringBefore(";")?.toLowerCase() ?: "application/json"
 
     var request: Request.Builder = when (requestConfig.method) {
       RequestMethod.DELETE -> Request.Builder().url(url).delete()
@@ -131,7 +119,6 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
     val realRequest = request.build()
     val response = client.newCall(realRequest).execute()
 
-    // TODO: handle specific mapping types. e.g. Map<int, Class<?>>
     when {
       response.isRedirect -> return Redirection(
           response.code(),
@@ -143,7 +130,7 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
           response.headers().toMultimap()
       )
       response.isSuccessful -> return Success(
-          responseBody(response),
+          response.body()?.string(),
           response.code(),
           response.headers().toMultimap()
       )
@@ -159,58 +146,5 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
           response.headers().toMultimap()
       )
     }
-  }
-
-  @Throws(IOException::class)
-  fun downloadFileFromResponse(response: Response): File {
-    val file = prepareDownloadFile(response)
-
-    response.body()?.byteStream().use { input ->
-      File(file.path).outputStream().use { input?.copyTo(it) }
-    }
-
-    return file
-  }
-
-  @Throws(IOException::class)
-  fun prepareDownloadFile(response: Response): File {
-    val filename: String?
-    val contentDisposition = response.header("Content-Disposition")
-
-    if (!contentDisposition.isNullOrBlank()) {
-      val matcher = fileNamePattern.matcher(contentDisposition)
-
-      if (matcher.find()) {
-        filename = matcher.group(1)
-      } else {
-        filename = null
-      }
-    } else {
-      filename = null
-    }
-
-    var prefix: String
-    var suffix: String? = null
-
-    if (filename == null) {
-      prefix = "download-"
-      suffix = ""
-    } else {
-      val pos = filename.lastIndexOf('.')
-
-      if (pos == -1) {
-        prefix = "$filename-";
-      } else {
-        prefix = filename.substring(0, pos) + "-"
-        suffix = filename.substring(pos)
-      }
-
-      // File.createTempFile requires the prefix to be at least three characters long
-      if (prefix.length < 3) {
-        prefix = "download-"
-      }
-    }
-
-    return File.createTempFile(prefix, suffix)
   }
 }

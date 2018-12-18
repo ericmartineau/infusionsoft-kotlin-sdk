@@ -1,9 +1,6 @@
 package io.mverse.client.infusionsoft.infrastructure
 
-import com.google.gson.FieldNamingPolicy.*
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import kotlinx.serialization.KSerializer
 import okhttp3.HttpUrl
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -20,7 +17,7 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
   val authHeaders: Map<String, String> = mapOf("Authorization" to "Bearer $bearerToken")
 
   companion object {
-    val fileNamePattern = Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?")
+    val fileNamePattern:Pattern = Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?")
     protected const val ContentType = "Content-Type"
     protected const val Accept = "Accept"
     protected const val JsonMediaType = "application/json"
@@ -42,7 +39,7 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
     val jsonHeaders: Map<String, String> = mapOf(ContentType to JsonMediaType, Accept to JsonMediaType)
   }
 
-  protected fun <T> requestBody(content: T?, mediaType: String = JsonMediaType, serializer: KSerializer<T>): RequestBody {
+  protected fun <T> requestBody(content: T?, mediaType: String = JsonMediaType): RequestBody {
     when {
       content is File -> return RequestBody.create(MediaType.parse(mediaType), content)
       mediaType == FormDataMediaType -> {
@@ -58,38 +55,24 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
             val stringValue = value as String
             requestBodyBuilder.addFormDataPart(key, stringValue)
           }
-          TODO("Handle other types inside FormDataMediaType")
+          illegalState("Handle other types inside FormDataMediaType")
         }
 
         return requestBodyBuilder.build()
       }
-      mediaType == JsonMediaType -> return RequestBody.create(
-          MediaType.parse(mediaType),
-          when (content) {
-            null -> ""
-            else -> gson.toJson(content)
-          }
-      )
-      mediaType == XmlMediaType -> TODO("xml not currently supported.")
+      mediaType == JsonMediaType -> return RequestBody.create(MediaType.parse(mediaType), gson.toJson(content))
+      mediaType == XmlMediaType -> illegalState("No content negotiation for xml yet")
     }
-
-    // TODO: this should be extended with other serializers
-    TODO("requestBody currently only supports JSON body and File body.")
+    illegalState("requestBody currently only supports JSON body and File body.")
   }
 
-  protected inline fun <reified T> responseBody(response: Response, serializer: KSerializer<T>): T? {
+  protected inline fun <reified T> responseBody(response: Response): T {
     val contentType = response.header("Content-Type") ?: JsonMediaType
+    val responseBody = response.body() ?: throw NullPointerException("Unable to convert null response to ${T::class.java}")
     return when {
-      response.body() == null -> null
       T::class == java.io.File::class -> downloadFileFromResponse(response) as T
       T::class == kotlin.Unit::class -> kotlin.Unit as T
-      contentType.isJson -> {
-        val inbound = response.body()?.string()
-        when (inbound) {
-          null -> null
-          else -> gson.fromJson(inbound, T::class.java)
-        }
-      }
+      contentType.isJson -> gson.fromJson(responseBody.string(), T::class.java)
       else -> illegalState("Unknown response type")
     }
   }
@@ -99,9 +82,11 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
     return this != null && (this.matches(jsonMime.toRegex()) || this == "*/*")
   }
 
-  protected inline fun <reified R, reified T> request(requestConfig: RequestConfig, body: R? = null,
-                                                      responseParser: KSerializer<T>,
-                                                      requestSerializer: KSerializer<R>): ApiResponse<T?> {
+  protected inline fun <reified T:Any> request(requestConfig: RequestConfig): ApiResponse<T> {
+    return request(requestConfig, null)
+  }
+
+  protected inline fun <reified T:Any> request(requestConfig: RequestConfig, body: Any?): ApiResponse<T> {
 
     val httpUrl = HttpUrl.parse(basePath)
         ?: throw IllegalStateException("baseUrl $basePath is invalid.")
@@ -135,9 +120,9 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
       RequestMethod.DELETE -> Request.Builder().url(url).delete()
       RequestMethod.GET -> Request.Builder().url(url)
       RequestMethod.HEAD -> Request.Builder().url(url).head()
-      RequestMethod.PATCH -> Request.Builder().url(url).patch(requestBody(body, contentType, requestSerializer))
-      RequestMethod.PUT -> Request.Builder().url(url).put(requestBody(body, contentType, requestSerializer))
-      RequestMethod.POST -> Request.Builder().url(url).post(requestBody(body, contentType, requestSerializer))
+      RequestMethod.PATCH -> Request.Builder().url(url).patch(requestBody(body, contentType))
+      RequestMethod.PUT -> Request.Builder().url(url).put(requestBody(body, contentType))
+      RequestMethod.POST -> Request.Builder().url(url).post(requestBody(body, contentType))
       RequestMethod.OPTIONS -> Request.Builder().url(url).method("OPTIONS", null)
     }
 
@@ -158,7 +143,7 @@ open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gs
           response.headers().toMultimap()
       )
       response.isSuccessful -> return Success(
-          responseBody(response, responseParser),
+          responseBody(response),
           response.code(),
           response.headers().toMultimap()
       )

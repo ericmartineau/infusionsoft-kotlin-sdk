@@ -47,19 +47,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Opportunity.serializer(),
-      Opportunity.serializer())
+    val response = request<Opportunity>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Opportunity
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Opportunity
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -87,18 +83,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Opportunity.serializer(),UnitSerializer)
+    val response = request<Opportunity>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Opportunity
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Opportunity
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -135,18 +128,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      OpportunityList.serializer(),UnitSerializer)
+    val response = request<OpportunityList>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as OpportunityList
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as OpportunityList
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -171,18 +161,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      SalesPipeline.serializer().list,UnitSerializer)
+    val response = request<List<SalesPipeline>>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as List<SalesPipeline>
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as List<SalesPipeline>
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -207,18 +194,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ObjectModel.serializer(),UnitSerializer)
+    val response = request<ObjectModel>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as ObjectModel
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as ObjectModel
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -244,19 +228,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Opportunity.serializer(),
-      Opportunity.serializer())
+    val response = request<Opportunity>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Opportunity
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Opportunity
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -283,19 +263,15 @@ class OpportunityApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Opportunity.serializer(),
-      Opportunity.serializer())
+    val response = request<Opportunity>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Opportunity
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Opportunity
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
 }

@@ -46,19 +46,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Appointment.serializer(),
-      Appointment.serializer())
+    val response = request<Appointment>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Appointment
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Appointment
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -83,18 +79,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      UnitSerializer, UnitSerializer)
+    val response = request<Unit>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> Unit
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Unit
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -120,18 +113,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Appointment.serializer(),UnitSerializer)
+    val response = request<Appointment>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Appointment
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Appointment
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -166,18 +156,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      AppointmentList.serializer(),UnitSerializer)
+    val response = request<AppointmentList>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as AppointmentList
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as AppointmentList
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -202,18 +189,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ObjectModel.serializer(),UnitSerializer)
+    val response = request<ObjectModel>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as ObjectModel
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as ObjectModel
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -240,19 +224,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Appointment.serializer(),
-      Appointment.serializer())
+    val response = request<Appointment>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Appointment
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Appointment
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -279,19 +259,15 @@ class AppointmentApi(bearerToken:String, basePath: String, gson: Gson) : ApiClie
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Appointment.serializer(),
-      Appointment.serializer())
+    val response = request<Appointment>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Appointment
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Appointment
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
 }

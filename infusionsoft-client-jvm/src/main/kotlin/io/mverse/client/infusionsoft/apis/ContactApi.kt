@@ -59,19 +59,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      EntryLongCommastring_.serializer().list,
-      TagId.serializer())
+    val response = request<List<EntryLongCommastring_>>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as List<EntryLongCommastring_>
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as List<EntryLongCommastring_>
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -97,19 +93,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      FullContact.serializer(),
-      CreateOrPatchContact.serializer())
+    val response = request<FullContact>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as FullContact
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as FullContact
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -136,19 +128,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      CreditCardAdded.serializer(),
-      CreditCard.serializer())
+    val response = request<CreditCardAdded>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as CreditCardAdded
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as CreditCardAdded
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -174,19 +162,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      CustomFieldMetaData.serializer(),
-      CreateRestCustomField.serializer())
+    val response = request<CustomFieldMetaData>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as CustomFieldMetaData
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as CustomFieldMetaData
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -213,19 +197,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      EmailSentCreate.serializer(),
-      EmailSentCreate.serializer())
+    val response = request<EmailSentCreate>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as EmailSentCreate
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as EmailSentCreate
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -251,19 +231,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      FullContact.serializer(),
-      UpsertContact.serializer())
+    val response = request<FullContact>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as FullContact
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as FullContact
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -288,18 +264,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      UnitSerializer, UnitSerializer)
+    val response = request<Unit>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> Unit
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Unit
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -327,18 +300,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      FullContact.serializer(),UnitSerializer)
+    val response = request<FullContact>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as FullContact
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as FullContact
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -368,18 +338,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ContactTagList.serializer(),UnitSerializer)
+    val response = request<ContactTagList>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as ContactTagList
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as ContactTagList
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -422,18 +389,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ContactList.serializer(),UnitSerializer)
+    val response = request<ContactList>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as ContactList
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as ContactList
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -459,18 +423,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ContactCreditCard.serializer().list,UnitSerializer)
+    val response = request<List<ContactCreditCard>>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as List<ContactCreditCard>
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as List<ContactCreditCard>
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -502,18 +463,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      EmailSentQueryResultList.serializer(),UnitSerializer)
+    val response = request<EmailSentQueryResultList>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as EmailSentQueryResultList
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as EmailSentQueryResultList
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -540,18 +498,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      UnitSerializer, UnitSerializer)
+    val response = request<Unit>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> Unit
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Unit
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -577,18 +532,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      UnitSerializer, UnitSerializer)
+    val response = request<Unit>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> Unit
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Unit
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -613,18 +565,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ObjectModel.serializer(),UnitSerializer)
+    val response = request<ObjectModel>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as ObjectModel
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as ObjectModel
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -653,19 +602,15 @@ class ContactApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(b
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      FullContact.serializer(),
-      CreateOrPatchContact.serializer())
+    val response = request<FullContact>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as FullContact
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as FullContact
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
 }

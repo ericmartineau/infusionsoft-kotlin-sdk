@@ -44,18 +44,15 @@ class LocaleApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(ba
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      CountriesByCode.serializer(),UnitSerializer)
+    val response = request<CountriesByCode>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as CountriesByCode
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as CountriesByCode
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -81,18 +78,15 @@ class LocaleApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(ba
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      ProvincesByCode.serializer(),UnitSerializer)
+    val response = request<ProvincesByCode>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as ProvincesByCode
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as ProvincesByCode
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
 }

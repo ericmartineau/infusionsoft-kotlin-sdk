@@ -47,19 +47,15 @@ class NoteApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Note.serializer(),
-      RequestNote.serializer())
+    val response = request<Note>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Note
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Note
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -84,18 +80,15 @@ class NoteApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      UnitSerializer, UnitSerializer)
+    val response = request<Unit>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> Unit
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Unit
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -121,18 +114,15 @@ class NoteApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Note.serializer(),UnitSerializer)
+    val response = request<Note>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Note
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Note
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -165,18 +155,15 @@ class NoteApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      NoteList.serializer(),UnitSerializer)
+    val response = request<NoteList>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as NoteList
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as NoteList
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -203,19 +190,15 @@ class NoteApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Note.serializer(),
-      RequestNote.serializer())
+    val response = request<Note>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Note
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Note
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
   /**
@@ -242,19 +225,15 @@ class NoteApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(base
        query = localVariableQuery,
        headers = localVariableHeaders
     )
-    val response = request(
-      localVariableConfig,
-      requestBody, 
-      Note.serializer(),
-      UpdateNote.serializer())
+    val response = request<Note>(localVariableConfig, requestBody)
 
-  return when (response.responseType) {
-       ResponseType.Success -> (response as Success<*>).data as Note
-       ResponseType.Informational -> TODO()
-       ResponseType.Redirection -> TODO()
-       ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-       ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-       else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+    return when (response) {
+      is Success<*> -> response.data as Note
+      is Informational<*> -> TODO()
+      is Redirection<*> -> TODO()
+      is ClientError<*> -> throw ClientException(response.body as? String ?: "Client error")
+      is ServerError<*> -> throw ServerException(response.message ?: "Server error")
+      else -> throw IllegalStateException("Undefined ResponseType.")
     }
   }
 }

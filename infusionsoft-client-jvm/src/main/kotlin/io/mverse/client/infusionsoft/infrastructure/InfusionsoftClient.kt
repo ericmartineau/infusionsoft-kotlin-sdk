@@ -1,39 +1,44 @@
 package io.mverse.client.infusionsoft.infrastructure
 
 import io.mverse.client.infusionsoft.apis.*
-import java.time.OffsetDateTime
+import com.google.gson.FieldNamingPolicy.*
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 
 
-class InfusionsoftClient(private val auth: OAuthToken,
+data class InfusionsoftClient(private val auth: OAuthToken,
                          private val tokenGenerator: AccessTokenGenerator,
-                         private val baseUrl: String = "https://api.infusionsoft.com/crm/rest/v1") {
+                         private val basePath: String = "https://api.infusionsoft.com/crm/rest/v1",
+                         private val gson: Gson = defaultGson()) {
 
-  val accountInfoApi: AccountInfoApi get() = AccountInfoApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val affiliateApi: AffiliateApi get() = AffiliateApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val appointmentApi: AppointmentApi get() = AppointmentApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val campaignApi: CampaignApi get() = CampaignApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val companyApi: CompanyApi get() = CompanyApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val contactApi: ContactApi get() = ContactApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val eCommerceApi: ECommerceApi get() = ECommerceApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val emailApi: EmailApi get() = EmailApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val emailAddressApi: EmailAddressApi get() = EmailAddressApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val fileApi: FileApi get() = FileApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val localeApi: LocaleApi get() = LocaleApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val merchantApi: MerchantApi get() = MerchantApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val noteApi: NoteApi get() = NoteApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val opportunityApi: OpportunityApi get() = OpportunityApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val productApi: ProductApi get() = ProductApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val rESTHooksApi: RESTHooksApi get() = RESTHooksApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val settingApi: SettingApi get() = SettingApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val tagsApi: TagsApi get() = TagsApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val taskApi: TaskApi get() = TaskApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val userInfoApi: UserInfoApi get() = UserInfoApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
-  val usersApi: UsersApi get() = UsersApi(bearerToken=tokenGenerator.accessToken(auth, baseUrl))
+  val accountInfoApi: AccountInfoApi get() = AccountInfoApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val affiliateApi: AffiliateApi get() = AffiliateApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val appointmentApi: AppointmentApi get() = AppointmentApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val campaignApi: CampaignApi get() = CampaignApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val companyApi: CompanyApi get() = CompanyApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val contactApi: ContactApi get() = ContactApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val eCommerceApi: ECommerceApi get() = ECommerceApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val emailApi: EmailApi get() = EmailApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val emailAddressApi: EmailAddressApi get() = EmailAddressApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val fileApi: FileApi get() = FileApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val localeApi: LocaleApi get() = LocaleApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val merchantApi: MerchantApi get() = MerchantApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val noteApi: NoteApi get() = NoteApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val opportunityApi: OpportunityApi get() = OpportunityApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val productApi: ProductApi get() = ProductApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val rESTHooksApi: RESTHooksApi get() = RESTHooksApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val settingApi: SettingApi get() = SettingApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val tagsApi: TagsApi get() = TagsApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val taskApi: TaskApi get() = TaskApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val userInfoApi: UserInfoApi get() = UserInfoApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
+  val usersApi: UsersApi get() = UsersApi(bearerToken=bearerToken, basePath=basePath, gson=gson)
 
-}
+  private val bearerToken: String get() = tokenGenerator.accessToken(auth, basePath)
 
-data class OAuthToken(val accessToken:String, val refreshToken: String, val expiry: OffsetDateTime)
+  companion object {
+    fun defaultGson():Gson = GsonBuilder()
+      .setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES)
+      .create()
+  }
 
-interface AccessTokenGenerator {
-  fun accessToken(auth:OAuthToken, baseUrl: String): String
 }

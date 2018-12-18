@@ -16,9 +16,10 @@ import io.mverse.client.infusionsoft.models.Setting
 
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
+import com.google.gson.Gson
 
 
-class SettingApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+class SettingApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
 
   /**
    *  Retrieve application status

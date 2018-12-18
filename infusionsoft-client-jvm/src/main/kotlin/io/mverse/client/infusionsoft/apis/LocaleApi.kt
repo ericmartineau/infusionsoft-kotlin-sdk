@@ -17,9 +17,10 @@ import io.mverse.client.infusionsoft.models.ProvincesByCode
 
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
+import com.google.gson.Gson
 
 
-class LocaleApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+class LocaleApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
 
   /**
    *  List Countries

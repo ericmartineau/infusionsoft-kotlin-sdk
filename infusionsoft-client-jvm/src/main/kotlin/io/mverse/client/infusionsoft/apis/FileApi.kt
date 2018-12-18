@@ -18,9 +18,10 @@ import io.mverse.client.infusionsoft.models.FileUpload
 
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
+import com.google.gson.Gson
 
 
-class FileApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+class FileApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
 
   /**
    *  Upload File

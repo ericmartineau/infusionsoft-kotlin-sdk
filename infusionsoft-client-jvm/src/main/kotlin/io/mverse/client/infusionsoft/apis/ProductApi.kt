@@ -22,9 +22,10 @@ import io.mverse.client.infusionsoft.models.ProductSubscription
 
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
+import com.google.gson.Gson
 
 
-class ProductApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+class ProductApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
 
   /**
    *  Create a Product

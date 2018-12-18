@@ -18,9 +18,10 @@ import io.mverse.client.infusionsoft.models.SetOfIds
 
 import io.mverse.client.infusionsoft.infrastructure.*
 import kotlinx.serialization.*
+import com.google.gson.Gson
 
 
-class CampaignApi(bearerToken:String, basePath: String = "https://api.infusionsoft.com/crm/rest/v1") : ApiClient(basePath, bearerToken) {
+class CampaignApi(bearerToken:String, basePath: String, gson: Gson) : ApiClient(basePath, bearerToken, gson) {
 
   /**
    *  Add to Campaign Sequence

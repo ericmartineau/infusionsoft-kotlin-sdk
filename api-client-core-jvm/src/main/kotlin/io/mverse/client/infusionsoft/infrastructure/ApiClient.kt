@@ -1,8 +1,5 @@
 package io.mverse.client.infusionsoft.infrastructure
 
-import com.google.gson.ExclusionStrategy
-import com.google.gson.FieldAttributes
-import com.google.gson.FieldNamingPolicy
 import com.google.gson.FieldNamingPolicy.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -18,15 +15,11 @@ import java.io.File
 import java.io.IOException
 import java.util.regex.Pattern
 
-open class ApiClient(val baseUrl: String, bearerToken: String, val gson: Gson = defaultGson) {
+open class ApiClient(val basePath: String, val bearerToken: String, val gson: Gson) {
 
   val authHeaders: Map<String, String> = mapOf("Authorization" to "Bearer $bearerToken")
 
   companion object {
-    val defaultGson:Gson = GsonBuilder()
-        .setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES)
-        .create()
-
     val fileNamePattern = Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?")
     protected const val ContentType = "Content-Type"
     protected const val Accept = "Accept"
@@ -110,8 +103,8 @@ open class ApiClient(val baseUrl: String, bearerToken: String, val gson: Gson = 
                                                       responseParser: KSerializer<T>,
                                                       requestSerializer: KSerializer<R>): ApiResponse<T?> {
 
-    val httpUrl = HttpUrl.parse(baseUrl)
-        ?: throw IllegalStateException("baseUrl $baseUrl is invalid.")
+    val httpUrl = HttpUrl.parse(basePath)
+        ?: throw IllegalStateException("baseUrl $basePath is invalid.")
 
     var urlBuilder = httpUrl.newBuilder()
         .addPathSegments(requestConfig.path.trimStart('/'))

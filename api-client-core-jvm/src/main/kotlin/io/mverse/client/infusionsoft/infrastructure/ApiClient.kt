@@ -1,5 +1,7 @@
 package io.mverse.client.infusionsoft.infrastructure
 
+import com.google.gson.ExclusionStrategy
+import com.google.gson.FieldAttributes
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.FieldNamingPolicy.*
 import com.google.gson.Gson
@@ -16,7 +18,7 @@ import java.io.File
 import java.io.IOException
 import java.util.regex.Pattern
 
-open class ApiClient(val baseUrl: String, val gson: Gson = defaultGson, bearerToken: String) {
+open class ApiClient(val baseUrl: String, bearerToken: String, val gson: Gson = defaultGson) {
 
   val authHeaders: Map<String, String> = mapOf("Authorization" to "Bearer $bearerToken")
 

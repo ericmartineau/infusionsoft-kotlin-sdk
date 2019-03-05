@@ -27,7 +27,7 @@ import kotlinx.serialization.SerialName
  * @param last_name 
  * @param phone_number 
  */
-@Serializable
+//@Serializable Not using right now
 data class OpportunityContact (
     @SerialName("id") val id: Long,
     @SerialName("company_name") @Optional val companyName: String? = null,

@@ -28,7 +28,7 @@ import kotlinx.serialization.SerialName
  * @param subject The subject line of the email
  * @param user_id The infusionsoft user to send the email on behalf of
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailSendRequest (
     /* An array of Contact Ids to receive the email */
     @SerialName("contacts") val contacts: List<Long>,

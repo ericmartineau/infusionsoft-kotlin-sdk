@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param orders 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class OrderList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

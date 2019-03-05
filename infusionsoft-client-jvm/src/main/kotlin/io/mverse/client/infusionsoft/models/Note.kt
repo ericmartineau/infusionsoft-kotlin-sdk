@@ -29,7 +29,7 @@ import kotlinx.serialization.SerialName
  * @param title 
  * @param user_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class Note (
     @SerialName("body") @Optional val body: String? = null,
     @SerialName("contact_id") @Optional val contactId: Long? = null,

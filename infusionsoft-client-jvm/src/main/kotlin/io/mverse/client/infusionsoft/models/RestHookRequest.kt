@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param eventKey 
  * @param hookUrl 
  */
-@Serializable
+//@Serializable Not using right now
 data class RestHookRequest (
     @SerialName("eventKey") @Optional val eventKey: String? = null,
     @SerialName("hookUrl") @Optional val hookUrl: String? = null

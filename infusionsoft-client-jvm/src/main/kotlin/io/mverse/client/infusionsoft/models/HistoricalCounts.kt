@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param 24_hours 
  * @param 30_days 
  */
-@Serializable
+//@Serializable Not using right now
 data class HistoricalCounts (
     @SerialName("24_hours") @Optional val safe24Hours: Int? = null,
     @SerialName("30_days") @Optional val safe30Days: Int? = null

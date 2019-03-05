@@ -28,7 +28,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param previous_sequence_ids 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class Goal (
     @SerialName("historical_contact_counts") @Optional val historicalContactCounts: HistoricalCounts? = null,
     @SerialName("id") @Optional val id: Long? = null,

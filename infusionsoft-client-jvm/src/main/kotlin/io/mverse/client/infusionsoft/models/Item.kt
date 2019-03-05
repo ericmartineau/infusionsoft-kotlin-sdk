@@ -26,7 +26,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param previous_item_id 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class Item (
     @SerialName("id") @Optional val id: Long? = null,
     @SerialName("name") @Optional val name: String? = null,

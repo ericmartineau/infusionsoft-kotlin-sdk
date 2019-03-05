@@ -45,7 +45,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param time_zone 
  * @param website 
  */
-@Serializable
+//@Serializable Not using right now
 data class RestUser (
     @SerialName("id") val id: Long,
     @SerialName("address") @Optional val address: Address? = null,

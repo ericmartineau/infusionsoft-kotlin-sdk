@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param date_applied 
  * @param tag 
  */
-@Serializable
+//@Serializable Not using right now
 data class ContactTag (
     @SerialName("date_applied") @Optional val dateApplied: java.time.LocalDateTime? = null,
     @SerialName("tag") @Optional val tag: SimpleTag? = null

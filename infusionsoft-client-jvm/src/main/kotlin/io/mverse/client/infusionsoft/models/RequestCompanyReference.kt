@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param id 
  */
-@Serializable
+//@Serializable Not using right now
 data class RequestCompanyReference (
     @SerialName("id") @Optional val id: Long? = null
 ) {

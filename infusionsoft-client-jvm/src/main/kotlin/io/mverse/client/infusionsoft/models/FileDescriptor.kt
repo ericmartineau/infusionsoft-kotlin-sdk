@@ -33,7 +33,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param &#x60;public&#x60; 
  * @param remote_file_key 
  */
-@Serializable
+//@Serializable Not using right now
 data class FileDescriptor (
     @SerialName("id") val id: Long,
     @SerialName("category") @Optional val category: FileDescriptor.Category? = null,

@@ -32,7 +32,7 @@ import kotlinx.serialization.SerialName
  * @param name_on_card 
  * @param verification_code 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreditCard (
     @SerialName("address") @Optional val address: ContactAddress? = null,
     @SerialName("card_number") @Optional val cardNumber: String? = null,

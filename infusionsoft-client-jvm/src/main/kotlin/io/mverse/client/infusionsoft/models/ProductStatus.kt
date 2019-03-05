@@ -24,7 +24,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param product 
  * @param status 
  */
-@Serializable
+//@Serializable Not using right now
 data class ProductStatus (
     @SerialName("product") @Optional val product: Product_? = null,
     @SerialName("status") @Optional val status: ProductStatus.Status? = null

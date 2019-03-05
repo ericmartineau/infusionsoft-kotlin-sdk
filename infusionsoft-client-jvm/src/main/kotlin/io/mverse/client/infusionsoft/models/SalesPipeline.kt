@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param stage_name 
  * @param stage_order 
  */
-@Serializable
+//@Serializable Not using right now
 data class SalesPipeline (
     @SerialName("end_stage") @Optional val endStage: Boolean? = null,
     @SerialName("is_default") @Optional val isDefault: Boolean? = null,

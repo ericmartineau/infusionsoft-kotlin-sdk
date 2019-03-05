@@ -27,7 +27,7 @@ import kotlinx.serialization.SerialName
  * @param sku 
  * @param subscription_only 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateProduct (
     @SerialName("product_name") val productName: String,
     @SerialName("active") @Optional val active: Boolean? = null,

@@ -24,7 +24,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param opted_in 
  * @param status 
  */
-@Serializable
+//@Serializable Not using right now
 data class RestEmailAddress (
     @SerialName("email") val email: String,
     @SerialName("opted_in") val optedIn: Boolean,

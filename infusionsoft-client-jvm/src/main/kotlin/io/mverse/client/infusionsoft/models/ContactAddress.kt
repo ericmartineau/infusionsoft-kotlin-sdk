@@ -30,7 +30,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param zip_code Mainly used in the United States, this is typically numeric. ex. '85001', '90002' Note: this is to be used instead of 'postal_code', not in addition to.
  * @param zip_four Last four of a full zip code ex. '8244', '4320'. This field is supplemental to the zip_code field, otherwise will be ignored.
  */
-@Serializable
+//@Serializable Not using right now
 data class ContactAddress (
     @SerialName("field") val field: ContactAddress.Field,
     @SerialName("country_code") @Optional val countryCode: String? = null,

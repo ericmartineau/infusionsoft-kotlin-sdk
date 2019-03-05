@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param ids 
  */
-@Serializable
+//@Serializable Not using right now
 data class SetOfIds (
     @SerialName("ids") val ids: List<Long>
 ) {

@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param next 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class TaggedCompanyList (
     @SerialName("companies") @Optional val companies: List<TaggedCompany>? = null,
     @SerialName("count") @Optional val count: Int? = null,

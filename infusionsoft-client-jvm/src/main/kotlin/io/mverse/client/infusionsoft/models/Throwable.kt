@@ -27,7 +27,7 @@ import kotlinx.serialization.SerialName
  * @param stackTrace 
  * @param suppressed 
  */
-@Serializable
+//@Serializable Not using right now
 data class Throwable (
     @SerialName("cause") @Optional val cause: Throwable? = null,
     @SerialName("localizedMessage") @Optional val localizedMessage: String? = null,

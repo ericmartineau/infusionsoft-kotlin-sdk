@@ -29,7 +29,7 @@ import kotlinx.serialization.SerialName
  * @param payment_gateway 
  * @param plan_start_date 
  */
-@Serializable
+//@Serializable Not using right now
 data class PaymentPlan (
     @SerialName("days_between_payments") val daysBetweenPayments: Int,
     @SerialName("number_of_payments") val numberOfPayments: Int,

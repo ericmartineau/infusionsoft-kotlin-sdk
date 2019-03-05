@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param opted_in 
  * @param reason 
  */
-@Serializable
+//@Serializable Not using right now
 data class UpdateEmailAddress (
     @SerialName("opted_in") val optedIn: Boolean,
     @SerialName("reason") val reason: String

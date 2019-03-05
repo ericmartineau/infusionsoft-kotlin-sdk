@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param previous 
  * @param users 
  */
-@Serializable
+//@Serializable Not using right now
 data class Users (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param id 
  * @param validation_status 
  */
-@Serializable
+//@Serializable Not using right now
 data class ContactCreditCard (
     @SerialName("card_number") @Optional val cardNumber: String? = null,
     @SerialName("card_type") @Optional val cardType: String? = null,

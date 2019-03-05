@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param emails 
  * @param errors 
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailSentCreateList (
     @SerialName("emails") @Optional val emails: List<EmailSentCreate>? = null,
     @SerialName("errors") @Optional val errors: List<EmailSentCreateError>? = null

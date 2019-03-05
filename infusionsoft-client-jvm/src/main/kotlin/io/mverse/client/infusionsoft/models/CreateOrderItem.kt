@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param product_id The id of the product to be added to the order.
  * @param quantity Quantity must be greater than or equal to 1
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateOrderItem (
     /* The id of the product to be added to the order. */
     @SerialName("product_id") val productId: Long,

@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param contact_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class AchieveApiGoalEvent (
     @SerialName("contact_id") val contactId: Long
 ) {

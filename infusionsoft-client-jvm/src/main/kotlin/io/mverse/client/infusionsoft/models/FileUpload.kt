@@ -26,7 +26,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param is_public 
  * @param file_association 
  */
-@Serializable
+//@Serializable Not using right now
 data class FileUpload (
     @SerialName("file_name") val fileName: String,
     @SerialName("file_data") val fileData: String,

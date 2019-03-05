@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param content 
  * @param id 
  */
-@Serializable
+//@Serializable Not using right now
 data class CustomFieldValue (
     @SerialName("content") @Optional val content: Any? = null,
     @SerialName("id") @Optional val id: Long? = null

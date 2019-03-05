@@ -39,7 +39,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param type 
  * @param values 
  */
-@Serializable
+//@Serializable Not using right now
 data class ProductOption (
     @SerialName("allow_spaces") @Optional val allowSpaces: Boolean? = null,
     @SerialName("can_contain_character") @Optional val canContainCharacter: Boolean? = null,

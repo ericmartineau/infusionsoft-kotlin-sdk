@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param previous 
  * @param transactions 
  */
-@Serializable
+//@Serializable Not using right now
 data class TransactionList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

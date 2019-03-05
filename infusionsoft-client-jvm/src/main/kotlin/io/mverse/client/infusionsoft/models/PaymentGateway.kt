@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param merchant_account_id 
  * @param use_default 
  */
-@Serializable
+//@Serializable Not using right now
 data class PaymentGateway (
     @SerialName("merchant_account_id") @Optional val merchantAccountId: Long? = null,
     @SerialName("use_default") @Optional val useDefault: Boolean? = null

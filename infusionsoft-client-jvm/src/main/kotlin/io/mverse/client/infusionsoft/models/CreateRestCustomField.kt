@@ -27,7 +27,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param options 
  * @param user_group_id An optional user group to choose from when selecting values for User or UserListBox fields.
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateRestCustomField (
     @SerialName("field_type") val fieldType: CreateRestCustomField.FieldType,
     @SerialName("label") val label: String,

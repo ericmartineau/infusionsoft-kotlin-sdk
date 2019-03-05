@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param message 
  * @param success 
  */
-@Serializable
+//@Serializable Not using right now
 data class GoalEventResultDTO (
     @SerialName("campaign_id") @Optional val campaignId: Long? = null,
     @SerialName("goal_id") @Optional val goalId: Long? = null,

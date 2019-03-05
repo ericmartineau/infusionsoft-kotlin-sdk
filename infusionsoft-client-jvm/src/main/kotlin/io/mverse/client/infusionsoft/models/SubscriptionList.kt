@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param previous 
  * @param subscriptions 
  */
-@Serializable
+//@Serializable Not using right now
 data class SubscriptionList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

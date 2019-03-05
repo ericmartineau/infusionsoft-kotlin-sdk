@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param email 
  * @param error_message 
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailSentCreateError (
     @SerialName("email") @Optional val email: EmailSentCreate? = null,
     @SerialName("error_message") @Optional val errorMessage: String? = null

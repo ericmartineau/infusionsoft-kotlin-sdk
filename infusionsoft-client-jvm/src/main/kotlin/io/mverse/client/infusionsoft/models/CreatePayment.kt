@@ -29,7 +29,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param payment_gateway_id 
  * @param payment_method_type 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreatePayment (
     @SerialName("apply_to_commissions") @Optional val applyToCommissions: Boolean? = null,
     @SerialName("charge_now") @Optional val chargeNow: Boolean? = null,

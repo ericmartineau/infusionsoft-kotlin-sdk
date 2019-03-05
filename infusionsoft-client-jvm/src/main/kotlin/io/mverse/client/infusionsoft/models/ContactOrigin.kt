@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param date 
  * @param ip_address 
  */
-@Serializable
+//@Serializable Not using right now
 data class ContactOrigin (
     @SerialName("date") val date: java.time.LocalDateTime,
     @SerialName("ip_address") val ipAddress: String

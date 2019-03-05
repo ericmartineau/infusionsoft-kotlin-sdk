@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param countries A key-value pair of country code and country name.
  */
-@Serializable
+//@Serializable Not using right now
 data class CountriesByCode (
     /* A key-value pair of country code and country name. */
     @SerialName("countries") val countries: Map<kotlin.String, String>

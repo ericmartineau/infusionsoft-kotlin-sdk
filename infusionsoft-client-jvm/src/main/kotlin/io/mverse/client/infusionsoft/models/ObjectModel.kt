@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param custom_fields 
  * @param optional_properties These fields are not transmitted by default on this model, but can be requested by specifying them in a comma-separated list in the optional_properties query parameter.
  */
-@Serializable
+//@Serializable Not using right now
 data class ObjectModel (
     @SerialName("custom_fields") @Optional val customFields: List<CustomFieldMetaData>? = null,
     /* These fields are not transmitted by default on this model, but can be requested by specifying them in a comma-separated list in the optional_properties query parameter. */

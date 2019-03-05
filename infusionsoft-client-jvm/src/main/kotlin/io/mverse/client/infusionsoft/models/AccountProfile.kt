@@ -35,7 +35,7 @@ import kotlinx.serialization.SerialName
  * @param time_zone 
  * @param website 
  */
-@Serializable
+//@Serializable Not using right now
 data class AccountProfile (
     @SerialName("address") @Optional val address: ContactAddress? = null,
     /* The goals of this business, ie. Grow Business, Convert more leads */

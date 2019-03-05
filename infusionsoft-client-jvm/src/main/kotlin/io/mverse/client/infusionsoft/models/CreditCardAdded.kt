@@ -34,7 +34,7 @@ import kotlinx.serialization.SerialName
  * @param validation_message 
  * @param validation_status 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreditCardAdded (
     @SerialName("address") @Optional val address: ContactAddress? = null,
     @SerialName("card_type") @Optional val cardType: String? = null,

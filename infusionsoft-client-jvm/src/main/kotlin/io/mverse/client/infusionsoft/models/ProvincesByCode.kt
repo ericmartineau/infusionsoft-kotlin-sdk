@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param provinces A key-value pair of province code and province name.
  */
-@Serializable
+//@Serializable Not using right now
 data class ProvincesByCode (
     /* A key-value pair of province code and province name. */
     @SerialName("provinces") val provinces: Map<kotlin.String, String>

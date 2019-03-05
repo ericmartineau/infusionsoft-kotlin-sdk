@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param stage_order 
  * @param target_num_days 
  */
-@Serializable
+//@Serializable Not using right now
 data class StageDetails (
     @SerialName("check_list_items") @Optional val checkListItems: List<CheckListItemDetails>? = null,
     @SerialName("probability") @Optional val probability: Int? = null,

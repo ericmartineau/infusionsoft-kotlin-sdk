@@ -32,7 +32,7 @@ import kotlinx.serialization.SerialName
  * @param zip_code 
  * @param zip_four 
  */
-@Serializable
+//@Serializable Not using right now
 data class AddressInformation (
     @SerialName("company") @Optional val company: String? = null,
     @SerialName("country_code") @Optional val countryCode: String? = null,

@@ -43,7 +43,7 @@ import kotlinx.serialization.SerialName
  * @param total_due 
  * @param total_paid 
  */
-@Serializable
+//@Serializable Not using right now
 data class Order (
     @SerialName("contact") @Optional val contact: OrderContactDetails? = null,
     @SerialName("creation_date") @Optional val creationDate: String? = null,

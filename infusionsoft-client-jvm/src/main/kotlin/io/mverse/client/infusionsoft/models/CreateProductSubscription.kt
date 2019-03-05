@@ -27,7 +27,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param plan_price 
  * @param subscription_plan_index 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateProductSubscription (
     @SerialName("cycle_type") val cycleType: CreateProductSubscription.CycleType,
     @SerialName("plan_price") val planPrice: Double,

@@ -23,7 +23,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param name 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class SocialAccount (
     @SerialName("name") @Optional val name: String? = null,
     @SerialName("type") @Optional val type: SocialAccount.Type? = null

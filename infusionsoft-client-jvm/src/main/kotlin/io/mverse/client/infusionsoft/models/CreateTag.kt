@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param description The tag description
  * @param name The tag name
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateTag (
     /* The tag name */
     @SerialName("name") val name: String,

@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param product_statuses 
  * @param sync_token 
  */
-@Serializable
+//@Serializable Not using right now
 data class ProductStatusList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

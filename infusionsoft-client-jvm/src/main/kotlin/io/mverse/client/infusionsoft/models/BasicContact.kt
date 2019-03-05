@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param id 
  * @param last_name 
  */
-@Serializable
+//@Serializable Not using right now
 data class BasicContact (
     @SerialName("email") @Optional val email: String? = null,
     @SerialName("first_name") @Optional val firstName: String? = null,

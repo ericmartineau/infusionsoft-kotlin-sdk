@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param next 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class ContactList (
     @SerialName("contacts") @Optional val contacts: List<RestPartialContact>? = null,
     @SerialName("count") @Optional val count: Int? = null,

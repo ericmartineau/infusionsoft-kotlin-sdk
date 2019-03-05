@@ -31,7 +31,7 @@ import kotlinx.serialization.SerialName
  * @param quantity 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class OrderItem (
     @SerialName("cost") @Optional val cost: Double? = null,
     @SerialName("description") @Optional val description: String? = null,

@@ -28,7 +28,7 @@ import kotlinx.serialization.SerialName
  * @param title 
  * @param user Required only for pop-up reminders
  */
-@Serializable
+//@Serializable Not using right now
 data class Appointment (
     @SerialName("end_date") val endDate: String,
     @SerialName("start_date") val startDate: String,

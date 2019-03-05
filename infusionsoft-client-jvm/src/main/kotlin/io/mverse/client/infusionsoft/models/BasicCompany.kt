@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param email 
  * @param id 
  */
-@Serializable
+//@Serializable Not using right now
 data class BasicCompany (
     @SerialName("company_name") @Optional val companyName: String? = null,
     @SerialName("email") @Optional val email: String? = null,

@@ -32,7 +32,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param sales_affiliate_id 
  * @param shipping_address 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateOrder (
     @SerialName("contact_id") val contactId: Long,
     @SerialName("order_date") val orderDate: java.time.LocalDateTime,

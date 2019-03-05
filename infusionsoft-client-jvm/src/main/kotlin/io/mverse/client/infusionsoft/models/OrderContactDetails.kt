@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param job_title 
  * @param last_name 
  */
-@Serializable
+//@Serializable Not using right now
 data class OrderContactDetails (
     @SerialName("company_name") @Optional val companyName: String? = null,
     @SerialName("email") @Optional val email: String? = null,

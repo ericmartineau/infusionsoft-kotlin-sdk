@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param id 
  * @param items 
  */
-@Serializable
+//@Serializable Not using right now
 data class SequencePath (
     @SerialName("id") @Optional val id: Long? = null,
     @SerialName("items") @Optional val items: List<Item>? = null

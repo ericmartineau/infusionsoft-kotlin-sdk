@@ -36,7 +36,7 @@ import kotlinx.serialization.SerialName
  * @param sequences 
  * @param time_zone 
  */
-@Serializable
+//@Serializable Not using right now
 data class Campaign (
     @SerialName("active_contact_count") @Optional val activeContactCount: Int? = null,
     @SerialName("completed_contact_count") @Optional val completedContactCount: Int? = null,

@@ -31,7 +31,7 @@ import kotlinx.serialization.SerialName
  * @param subscription_plans 
  * @param url 
  */
-@Serializable
+//@Serializable Not using right now
 data class Product (
     @SerialName("id") val id: Long,
     @SerialName("product_name") val productName: String,

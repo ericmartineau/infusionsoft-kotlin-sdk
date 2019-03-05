@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param name 
  * @param reasons 
  */
-@Serializable
+//@Serializable Not using right now
 data class SimpleOpportunityStage (
     @SerialName("id") val id: Long,
     @SerialName("details") @Optional val details: StageDetails? = null,

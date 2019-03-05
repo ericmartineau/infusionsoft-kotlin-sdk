@@ -37,7 +37,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param subscription_plan_id 
  * @param use_default_payment_gateway 
  */
-@Serializable
+//@Serializable Not using right now
 data class Subscription (
     @SerialName("active") @Optional val active: Boolean? = null,
     @SerialName("auto_charge") @Optional val autoCharge: Boolean? = null,

@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param sku 
  * @param taxable 
  */
-@Serializable
+//@Serializable Not using right now
 data class SimpleProduct (
     @SerialName("description") @Optional val description: String? = null,
     @SerialName("id") @Optional val id: Long? = null,

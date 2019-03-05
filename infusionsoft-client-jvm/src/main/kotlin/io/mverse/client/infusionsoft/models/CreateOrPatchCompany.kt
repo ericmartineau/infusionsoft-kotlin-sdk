@@ -33,7 +33,7 @@ import kotlinx.serialization.SerialName
  * @param phone_number 
  * @param website 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateOrPatchCompany (
     @SerialName("company_name") val companyName: String,
     @SerialName("address") @Optional val address: CompanyAddress? = null,

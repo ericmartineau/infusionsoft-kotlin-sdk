@@ -40,7 +40,7 @@ import kotlinx.serialization.SerialName
  * @param stage 
  * @param user 
  */
-@Serializable
+//@Serializable Not using right now
 data class Opportunity (
     @SerialName("contact") val contact: OpportunityContact,
     @SerialName("opportunity_title") val opportunityTitle: String,

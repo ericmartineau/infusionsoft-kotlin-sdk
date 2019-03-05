@@ -57,7 +57,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param time_zone 
  * @param website 
  */
-@Serializable
+//@Serializable Not using right now
 data class UpsertContact (
     @SerialName("addresses") @Optional val addresses: List<ContactAddress>? = null,
     @SerialName("anniversary") @Optional val anniversary: java.time.LocalDateTime? = null,

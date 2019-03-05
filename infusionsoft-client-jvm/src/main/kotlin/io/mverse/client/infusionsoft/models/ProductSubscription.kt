@@ -30,7 +30,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param subscription_plan_name 
  * @param url 
  */
-@Serializable
+//@Serializable Not using right now
 data class ProductSubscription (
     @SerialName("cycle_type") val cycleType: ProductSubscription.CycleType,
     @SerialName("id") val id: Long,

@@ -28,7 +28,7 @@ import kotlinx.serialization.SerialName
  * @param preferred_name 
  * @param sub 
  */
-@Serializable
+//@Serializable Not using right now
 data class UserInfoDTO (
     @SerialName("email") val email: String,
     @SerialName("family_name") val familyName: String,

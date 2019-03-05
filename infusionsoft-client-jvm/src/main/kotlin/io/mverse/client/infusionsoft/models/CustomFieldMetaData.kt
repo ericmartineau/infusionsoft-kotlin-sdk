@@ -27,7 +27,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param options 
  * @param record_type 
  */
-@Serializable
+//@Serializable Not using right now
 data class CustomFieldMetaData (
     @SerialName("field_type") @Optional val fieldType: CustomFieldMetaData.FieldType? = null,
     @SerialName("id") @Optional val id: Long? = null,

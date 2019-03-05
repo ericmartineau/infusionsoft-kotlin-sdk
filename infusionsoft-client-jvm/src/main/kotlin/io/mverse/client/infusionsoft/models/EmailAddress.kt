@@ -23,7 +23,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param email 
  * @param field 
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailAddress (
     @SerialName("field") val field: EmailAddress.Field,
     @SerialName("email") @Optional val email: String? = null

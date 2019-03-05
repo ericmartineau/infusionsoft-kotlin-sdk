@@ -28,7 +28,7 @@ import kotlinx.serialization.SerialName
  * @param name 
  * @param paths 
  */
-@Serializable
+//@Serializable Not using right now
 data class Sequence (
     @SerialName("active_contact_count") @Optional val activeContactCount: Int? = null,
     @SerialName("active_contact_count_completed") @Optional val activeContactCountCompleted: Int? = null,

@@ -39,7 +39,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param sent_to_cc_addresses 
  * @param subject 
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailSentCreate (
     @SerialName("sent_to_address") val sentToAddress: String,
     @SerialName("clicked_date") @Optional val clickedDate: java.time.LocalDateTime? = null,

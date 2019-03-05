@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param is_test 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class Merchant (
     @SerialName("account_name") @Optional val accountName: String? = null,
     @SerialName("id") @Optional val id: Long? = null,

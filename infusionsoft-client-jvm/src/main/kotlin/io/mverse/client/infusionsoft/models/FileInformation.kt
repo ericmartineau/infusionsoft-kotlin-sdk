@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param file_data 
  * @param file_descriptor 
  */
-@Serializable
+//@Serializable Not using right now
 data class FileInformation (
     @SerialName("file_data") @Optional val fileData: String? = null,
     @SerialName("file_descriptor") @Optional val fileDescriptor: FileDescriptor? = null

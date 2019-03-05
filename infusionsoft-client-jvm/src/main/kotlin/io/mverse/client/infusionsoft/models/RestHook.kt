@@ -25,7 +25,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param key 
  * @param status 
  */
-@Serializable
+//@Serializable Not using right now
 data class RestHook (
     @SerialName("eventKey") @Optional val eventKey: String? = null,
     @SerialName("hookUrl") @Optional val hookUrl: String? = null,

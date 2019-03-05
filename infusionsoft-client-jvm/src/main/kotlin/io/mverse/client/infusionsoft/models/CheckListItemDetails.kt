@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param item_order 
  * @param required 
  */
-@Serializable
+//@Serializable Not using right now
 data class CheckListItemDetails (
     @SerialName("description") @Optional val description: String? = null,
     @SerialName("done_date") @Optional val doneDate: java.time.LocalDateTime? = null,

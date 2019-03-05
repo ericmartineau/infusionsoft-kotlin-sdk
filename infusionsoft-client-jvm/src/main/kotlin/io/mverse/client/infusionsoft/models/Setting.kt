@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param value 
  */
-@Serializable
+//@Serializable Not using right now
 data class Setting (
     @SerialName("value") @Optional val value: String? = null
 ) {

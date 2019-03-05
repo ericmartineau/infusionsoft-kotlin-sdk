@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param given_name 
  * @param user_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class NoteUser (
     @SerialName("family_name") @Optional val familyName: String? = null,
     @SerialName("given_name") @Optional val givenName: String? = null,

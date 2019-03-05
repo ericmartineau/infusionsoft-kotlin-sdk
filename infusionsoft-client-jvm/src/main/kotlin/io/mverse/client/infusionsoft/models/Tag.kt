@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param id The id for the tag
  * @param name The tag name
  */
-@Serializable
+//@Serializable Not using right now
 data class Tag (
     /* The id for the tag */
     @SerialName("id") val id: Long,

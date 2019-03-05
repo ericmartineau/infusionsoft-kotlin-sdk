@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param next 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class AffiliateCommissionList (
     @SerialName("commissions") @Optional val commissions: List<AffiliateCommission>? = null,
     @SerialName("count") @Optional val count: Int? = null,

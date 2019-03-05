@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param payment_status 
  * @param transaction_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class PaymentResult (
     @SerialName("id") @Optional val id: Long? = null,
     @SerialName("invoice_id") @Optional val invoiceId: Long? = null,

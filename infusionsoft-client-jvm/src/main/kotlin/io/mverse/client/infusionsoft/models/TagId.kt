@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param tagIds 
  */
-@Serializable
+//@Serializable Not using right now
 data class TagId (
     @SerialName("tagIds") @Optional val tagIds: List<Long>? = null
 ) {

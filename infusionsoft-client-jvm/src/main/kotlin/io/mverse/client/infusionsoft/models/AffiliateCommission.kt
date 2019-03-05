@@ -31,7 +31,7 @@ import kotlinx.serialization.SerialName
  * @param sold_by_first_name 
  * @param sold_by_last_name 
  */
-@Serializable
+//@Serializable Not using right now
 data class AffiliateCommission (
     @SerialName("amount_earned") @Optional val amountEarned: Float? = null,
     @SerialName("contact_first_name") @Optional val contactFirstName: String? = null,

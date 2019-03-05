@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param description The category description
  * @param name The category name
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateTagCategory (
     /* The category name */
     @SerialName("name") val name: String,

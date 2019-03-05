@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param id 
  * @param name 
  */
-@Serializable
+//@Serializable Not using right now
 data class SimpleTag (
     @SerialName("category") @Optional val category: String? = null,
     @SerialName("id") @Optional val id: Long? = null,

@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param previous 
  * @param sync_token 
  */
-@Serializable
+//@Serializable Not using right now
 data class AppointmentList (
     @SerialName("appointments") @Optional val appointments: List<Appointment>? = null,
     @SerialName("count") @Optional val count: Int? = null,

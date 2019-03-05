@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param next 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailSentQueryResultList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("emails") @Optional val emails: List<EmailSentQueryResult>? = null,

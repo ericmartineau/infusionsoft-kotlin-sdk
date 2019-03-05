@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param given_name 
  * @param partner 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateUser (
     @SerialName("email") val email: String,
     @SerialName("given_name") val givenName: String,

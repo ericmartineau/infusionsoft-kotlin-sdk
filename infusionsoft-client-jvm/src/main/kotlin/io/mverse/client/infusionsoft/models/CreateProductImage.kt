@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param file_data The image data, base64 encoded.
  * @param file_name The name of the file with extension, must match file data.  Acceptable file types:  [.png, .gif, .jpg, .jpeg].
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateProductImage (
     /* The image data, base64 encoded. */
     @SerialName("file_data") val fileData: String,

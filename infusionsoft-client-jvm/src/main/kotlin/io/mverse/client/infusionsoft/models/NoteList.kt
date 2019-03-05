@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param notes 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class NoteList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

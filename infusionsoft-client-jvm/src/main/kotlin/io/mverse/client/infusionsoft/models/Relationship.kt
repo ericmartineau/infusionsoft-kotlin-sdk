@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param linked_contact_id 
  * @param relationship_type_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class Relationship (
     @SerialName("id") @Optional val id: Long? = null,
     @SerialName("linked_contact_id") @Optional val linkedContactId: Long? = null,

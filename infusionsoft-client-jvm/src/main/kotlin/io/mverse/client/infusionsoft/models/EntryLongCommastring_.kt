@@ -22,7 +22,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * 
  * @param key 
  */
-@Serializable
+//@Serializable Not using right now
 data class EntryLongCommastring_ (
     @SerialName("key") @Optional val key: EntryLongCommastring_.Key? = null
 ) {

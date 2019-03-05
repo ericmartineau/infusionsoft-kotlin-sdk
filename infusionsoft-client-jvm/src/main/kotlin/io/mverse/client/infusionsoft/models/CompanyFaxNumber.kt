@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param number 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class CompanyFaxNumber (
     @SerialName("number") @Optional val number: String? = null,
     @SerialName("type") @Optional val type: String? = null

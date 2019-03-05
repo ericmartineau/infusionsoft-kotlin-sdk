@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param default_merchant_account 
  * @param merchant_accounts 
  */
-@Serializable
+//@Serializable Not using right now
 data class RestMerchantAccountResponse (
     @SerialName("default_merchant_account") @Optional val defaultMerchantAccount: Long? = null,
     @SerialName("merchant_accounts") @Optional val merchantAccounts: List<Merchant>? = null

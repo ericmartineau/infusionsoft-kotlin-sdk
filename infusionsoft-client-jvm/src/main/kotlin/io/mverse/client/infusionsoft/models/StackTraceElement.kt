@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param methodName 
  * @param nativeMethod 
  */
-@Serializable
+//@Serializable Not using right now
 data class StackTraceElement (
     @SerialName("className") @Optional val className: String? = null,
     @SerialName("fileName") @Optional val fileName: String? = null,

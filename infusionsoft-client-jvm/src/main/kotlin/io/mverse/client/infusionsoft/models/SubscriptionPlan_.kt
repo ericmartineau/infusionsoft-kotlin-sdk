@@ -29,7 +29,7 @@ import kotlinx.serialization.SerialName
  * @param subscription_plan_name 
  * @param url 
  */
-@Serializable
+//@Serializable Not using right now
 data class SubscriptionPlan_ (
     @SerialName("active") @Optional val active: Boolean? = null,
     @SerialName("cycle") @Optional val cycle: Int? = null,

@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param price_adjustment 
  * @param sku 
  */
-@Serializable
+//@Serializable Not using right now
 data class ProductOptionValue (
     @SerialName("id") @Optional val id: Long? = null,
     @SerialName("index") @Optional val index: Long? = null,

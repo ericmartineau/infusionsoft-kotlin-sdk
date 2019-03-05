@@ -35,7 +35,7 @@ import kotlinx.serialization.SerialName
  * @param transaction_date 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class Transaction (
     @SerialName("amount") @Optional val amount: Double? = null,
     @SerialName("collection_method") @Optional val collectionMethod: String? = null,

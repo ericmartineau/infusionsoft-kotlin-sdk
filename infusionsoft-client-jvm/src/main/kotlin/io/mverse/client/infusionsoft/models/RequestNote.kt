@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param title 
  * @param user_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class RequestNote (
     @SerialName("contact_id") val contactId: Long,
     @SerialName("user_id") val userId: Long,

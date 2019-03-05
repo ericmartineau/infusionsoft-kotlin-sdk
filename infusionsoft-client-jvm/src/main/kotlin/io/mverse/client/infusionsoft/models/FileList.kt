@@ -25,7 +25,7 @@ import kotlinx.serialization.SerialName
  * @param next 
  * @param previous 
  */
-@Serializable
+//@Serializable Not using right now
 data class FileList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("files") @Optional val files: List<FileDescriptor>? = null,

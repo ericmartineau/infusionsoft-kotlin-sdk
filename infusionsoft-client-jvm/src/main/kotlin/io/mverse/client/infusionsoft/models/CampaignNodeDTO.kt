@@ -26,7 +26,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param ready 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class CampaignNodeDTO (
     @SerialName("id") @Optional val id: String? = null,
     @SerialName("name") @Optional val name: String? = null,

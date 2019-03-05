@@ -34,7 +34,7 @@ import kotlinx.serialization.SerialName
  * @param url 
  * @param user_id 
  */
-@Serializable
+//@Serializable Not using right now
 data class Task (
     @SerialName("completed") @Optional val completed: Boolean? = null,
     @SerialName("completion_date") @Optional val completionDate: String? = null,

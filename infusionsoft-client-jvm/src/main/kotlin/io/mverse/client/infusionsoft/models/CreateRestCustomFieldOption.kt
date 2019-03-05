@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param label 
  * @param options 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateRestCustomFieldOption (
     @SerialName("label") @Optional val label: String? = null,
     @SerialName("options") @Optional val options: List<CreateRestCustomFieldOption>? = null

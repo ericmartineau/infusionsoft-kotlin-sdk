@@ -24,7 +24,7 @@ import kotlinx.serialization.SerialName
  * @param label 
  * @param options 
  */
-@Serializable
+//@Serializable Not using right now
 data class CustomFieldOption (
     @SerialName("id") @Optional val id: String? = null,
     @SerialName("label") @Optional val label: String? = null,

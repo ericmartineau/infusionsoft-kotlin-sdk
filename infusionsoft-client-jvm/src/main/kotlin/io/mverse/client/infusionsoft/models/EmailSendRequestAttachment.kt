@@ -22,7 +22,7 @@ import kotlinx.serialization.SerialName
  * @param file_data The content of the attachment, encoded in Base64
  * @param file_name The filename of the attached file, including extension
  */
-@Serializable
+//@Serializable Not using right now
 data class EmailSendRequestAttachment (
     /* The content of the attachment, encoded in Base64 */
     @SerialName("file_data") @Optional val fileData: String? = null,

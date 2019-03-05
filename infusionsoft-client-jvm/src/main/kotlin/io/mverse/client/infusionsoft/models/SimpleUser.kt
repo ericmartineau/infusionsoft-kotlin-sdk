@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param id 
  * @param last_name 
  */
-@Serializable
+//@Serializable Not using right now
 data class SimpleUser (
     @SerialName("first_name") @Optional val firstName: String? = null,
     @SerialName("id") @Optional val id: Long? = null,

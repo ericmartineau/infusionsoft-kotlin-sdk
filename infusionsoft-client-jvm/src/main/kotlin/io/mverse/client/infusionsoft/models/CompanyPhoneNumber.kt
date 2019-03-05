@@ -23,7 +23,7 @@ import kotlinx.serialization.SerialName
  * @param number 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class CompanyPhoneNumber (
     @SerialName("extension") @Optional val extension: String? = null,
     @SerialName("number") @Optional val number: String? = null,

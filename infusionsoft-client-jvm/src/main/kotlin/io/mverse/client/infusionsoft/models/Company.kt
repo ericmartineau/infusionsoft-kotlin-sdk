@@ -36,7 +36,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param phone_number 
  * @param website 
  */
-@Serializable
+//@Serializable Not using right now
 data class Company (
     @SerialName("address") @Optional val address: CompanyAddress? = null,
     @SerialName("company_name") @Optional val companyName: String? = null,

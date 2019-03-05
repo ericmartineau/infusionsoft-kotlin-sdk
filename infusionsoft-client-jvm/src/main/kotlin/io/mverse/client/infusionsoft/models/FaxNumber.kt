@@ -24,7 +24,7 @@ import io.mverse.client.infusionsoft.infrastructure.EnumStringSerializer
  * @param number 
  * @param type 
  */
-@Serializable
+//@Serializable Not using right now
 data class FaxNumber (
     @SerialName("field") val field: FaxNumber.Field,
     @SerialName("number") @Optional val number: String? = null,

@@ -26,7 +26,7 @@ import kotlinx.serialization.SerialName
  * @param sync_token 
  * @param tasks 
  */
-@Serializable
+//@Serializable Not using right now
 data class TaskList (
     @SerialName("count") @Optional val count: Int? = null,
     @SerialName("next") @Optional val next: String? = null,

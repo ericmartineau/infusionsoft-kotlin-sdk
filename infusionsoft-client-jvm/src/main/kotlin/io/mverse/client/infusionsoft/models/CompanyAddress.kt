@@ -27,7 +27,7 @@ import kotlinx.serialization.SerialName
  * @param zip_code 
  * @param zip_four 
  */
-@Serializable
+//@Serializable Not using right now
 data class CompanyAddress (
     @SerialName("country_code") @Optional val countryCode: String? = null,
     @SerialName("line1") @Optional val line1: String? = null,

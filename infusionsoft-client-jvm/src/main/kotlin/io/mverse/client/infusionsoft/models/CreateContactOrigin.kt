@@ -21,7 +21,7 @@ import kotlinx.serialization.SerialName
  * 
  * @param ip_address 
  */
-@Serializable
+//@Serializable Not using right now
 data class CreateContactOrigin (
     @SerialName("ip_address") val ipAddress: String
 ) {

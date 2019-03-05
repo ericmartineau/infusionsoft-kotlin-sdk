@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country_code** | **String** |  |  [optional]
-**field** | [**inline**](#FieldEnum) |  |  [optional]
+**field** | [**inline**](#FieldEnum) |  | 
 **line1** | **String** |  |  [optional]
 **line2** | **String** |  |  [optional]
 **locality** | **String** |  |  [optional]

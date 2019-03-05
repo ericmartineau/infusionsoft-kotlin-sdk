@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **String** |  |  [optional]
-**field** | [**inline**](#FieldEnum) |  |  [optional]
+**field** | [**inline**](#FieldEnum) |  | 
 
 
 <a name="FieldEnum"></a>

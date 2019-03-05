@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addContactToCampaignSequence**](CampaignApi.md#addContactToCampaignSequence) | **POST** /campaigns/{campaignId}/sequences/{sequenceId}/contacts/{contactId} | Add to Campaign Sequence
 [**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /campaigns/{campaignId}/sequences/{sequenceId}/contacts | Add Multiple to Campaign Sequence
+[**createAchieveApiGoalEvent**](CampaignApi.md#createAchieveApiGoalEvent) | **POST** /campaigns/goals/{integration}/{callName} | Achieve API Goal
 [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /campaigns/{campaignId} | Retrieve a Campaign
 [**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /campaigns | List Campaigns
 [**removeContactFromCampaignSequence**](CampaignApi.md#removeContactFromCampaignSequence) | **DELETE** /campaigns/{campaignId}/sequences/{sequenceId}/contacts/{contactId} | Remove from Campaign Sequence
@@ -103,6 +104,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 **Map&lt;kotlin.String, String&gt;**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createAchieveApiGoalEvent"></a>
+# **createAchieveApiGoalEvent**
+> List&lt;GoalEventResultDTO&gt; createAchieveApiGoalEvent(integration, callName, goalEvent)
+
+Achieve API Goal
+
+Achieves API goal for campaigns with matching integration, callName for a given contactId
+
+### Example
+```kotlin
+// Import classes:
+//import io.mverse.client.infusionsoft.infrastructure.*
+//import io.mverse.client.infusionsoft.models.*
+
+val apiInstance = CampaignApi()
+val integration : String = integration_example // String | integration
+val callName : String = callName_example // String | callName
+val goalEvent : AchieveApiGoalEvent =  // AchieveApiGoalEvent | goalEvent
+try {
+    val result : List<GoalEventResultDTO> = apiInstance.createAchieveApiGoalEvent(integration, callName, goalEvent)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling CampaignApi#createAchieveApiGoalEvent")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling CampaignApi#createAchieveApiGoalEvent")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **integration** | **String**| integration |
+ **callName** | **String**| callName |
+ **goalEvent** | [**AchieveApiGoalEvent**](AchieveApiGoalEvent.md)| goalEvent |
+
+### Return type
+
+[**List&lt;GoalEventResultDTO&gt;**](GoalEventResultDTO.md)
 
 ### Authorization
 

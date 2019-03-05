@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field** | [**inline**](#FieldEnum) |  |  [optional]
+**field** | [**inline**](#FieldEnum) |  | 
 **number** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
 

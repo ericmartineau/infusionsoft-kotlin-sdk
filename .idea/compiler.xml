@@ -2,6 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="infusionsoft-client.api-client-core-jvm.main" target="1.8" />
+      <module name="infusionsoft-client.api-client-core-jvm.test" target="1.8" />
+      <module name="infusionsoft-client.infusionsoft-client-jvm.main" target="1.8" />
+      <module name="infusionsoft-client.infusionsoft-client-jvm.test" target="1.8" />
+      <module name="infusionsoft-kotlin-sdk.api-client-core-jvm.main" target="1.8" />
+      <module name="infusionsoft-kotlin-sdk.api-client-core-jvm.test" target="1.8" />
+      <module name="infusionsoft-kotlin-sdk.infusionsoft-client-jvm.main" target="1.8" />
+      <module name="infusionsoft-kotlin-sdk.infusionsoft-client-jvm.test" target="1.8" />
+      <module name="infusionsoft-kotlin-sdk.main" target="1.8" />
+      <module name="infusionsoft-kotlin-sdk.test" target="1.8" />
       <module name="io.mverse.api-client-core-jvm.main" target="1.8" />
       <module name="io.mverse.api-client-core-jvm.test" target="1.8" />
       <module name="io.mverse.infusionsoft-client-core-jvm.main" target="1.8" />

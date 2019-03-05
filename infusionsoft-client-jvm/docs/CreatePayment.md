@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **credit_card_id** | **Long** |  |  [optional]
 **date** | [**java.time.LocalDateTime**](java.time.LocalDateTime.md) | Used when charge_now:false or inserting historical data. ex &#x60;2017-01-01T22:17:59.039Z&#x60; |  [optional]
 **notes** | **String** |  |  [optional]
-**payment_amount** | **Double** |  |  [optional]
+**payment_amount** | **String** |  |  [optional]
 **payment_gateway_id** | **String** |  |  [optional]
 **payment_method_type** | [**inline**](#Payment_method_typeEnum) |  |  [optional]
 

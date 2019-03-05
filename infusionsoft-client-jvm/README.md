@@ -48,6 +48,7 @@ Class | Method | HTTP request | Description
 *AppointmentApi* | [**updatePropertiesOnAppointment**](docs/AppointmentApi.md#updatepropertiesonappointment) | **PATCH** /appointments/{appointmentId} | Update an Appointment
 *CampaignApi* | [**addContactToCampaignSequence**](docs/CampaignApi.md#addcontacttocampaignsequence) | **POST** /campaigns/{campaignId}/sequences/{sequenceId}/contacts/{contactId} | Add to Campaign Sequence
 *CampaignApi* | [**addContactsToCampaignSequence**](docs/CampaignApi.md#addcontactstocampaignsequence) | **POST** /campaigns/{campaignId}/sequences/{sequenceId}/contacts | Add Multiple to Campaign Sequence
+*CampaignApi* | [**createAchieveApiGoalEvent**](docs/CampaignApi.md#createachieveapigoalevent) | **POST** /campaigns/goals/{integration}/{callName} | Achieve API Goal
 *CampaignApi* | [**getCampaign**](docs/CampaignApi.md#getcampaign) | **GET** /campaigns/{campaignId} | Retrieve a Campaign
 *CampaignApi* | [**listCampaigns**](docs/CampaignApi.md#listcampaigns) | **GET** /campaigns | List Campaigns
 *CampaignApi* | [**removeContactFromCampaignSequence**](docs/CampaignApi.md#removecontactfromcampaignsequence) | **DELETE** /campaigns/{campaignId}/sequences/{sequenceId}/contacts/{contactId} | Remove from Campaign Sequence
@@ -162,6 +163,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [io.mverse.client.infusionsoft.models.AccountProfile](docs/AccountProfile.md)
+ - [io.mverse.client.infusionsoft.models.AchieveApiGoalEvent](docs/AchieveApiGoalEvent.md)
  - [io.mverse.client.infusionsoft.models.Address](docs/Address.md)
  - [io.mverse.client.infusionsoft.models.AddressInformation](docs/AddressInformation.md)
  - [io.mverse.client.infusionsoft.models.AffiliateCommission](docs/AffiliateCommission.md)
@@ -226,6 +228,7 @@ Class | Method | HTTP request | Description
  - [io.mverse.client.infusionsoft.models.FileUpload](docs/FileUpload.md)
  - [io.mverse.client.infusionsoft.models.FullContact](docs/FullContact.md)
  - [io.mverse.client.infusionsoft.models.Goal](docs/Goal.md)
+ - [io.mverse.client.infusionsoft.models.GoalEventResultDTO](docs/GoalEventResultDTO.md)
  - [io.mverse.client.infusionsoft.models.HistoricalCounts](docs/HistoricalCounts.md)
  - [io.mverse.client.infusionsoft.models.Item](docs/Item.md)
  - [io.mverse.client.infusionsoft.models.Merchant](docs/Merchant.md)

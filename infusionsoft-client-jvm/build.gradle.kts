@@ -1,6 +1,6 @@
 plugins {
+  kotlin("jvm")
   id("kotlinx-serialization")
-  id("org.jetbrains.kotlin.jvm")
 }
 
 mverse {

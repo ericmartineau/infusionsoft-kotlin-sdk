@@ -1,6 +1,5 @@
 plugins {
-  id("kotlinx-serialization")
-  id("org.jetbrains.kotlin.jvm")
+  kotlin("jvm")
 }
 
 mverse {
@@ -8,6 +7,10 @@ mverse {
     compile(kotlinStdlib())
     compile("kotlin-reflect")
     compile("gson")
+    compile("ktor-client-core")
+    compile("ktor-client-cio")
+    compile("ktor-client-json")
+    compile("ktor-client-gson")
   }
 }
 
@@ -17,6 +20,4 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib:1.3.10")
     compile("org.jetbrains.kotlin:kotlin-reflect:1.3.10")
     compile("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.1")
-    compile("com.squareup.okhttp3:okhttp:3.8.0")
-    compile("org.threeten:threetenbp:1.3.6")
 }

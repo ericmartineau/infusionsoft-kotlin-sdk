@@ -7,6 +7,7 @@ import kotlinx.serialization.SerialDescriptor
 import kotlinx.serialization.Serializer
 import kotlinx.serialization.context.SimpleModule
 import kotlinx.serialization.enumMembers
+import kotlinx.serialization.internal.SerialClassDescImpl
 import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.JSON
 import kotlinx.serialization.withName
@@ -80,7 +81,10 @@ open class EnumStringSerializer<E:Enum<E>>(val type: KClass<E>): KSerializer<E> 
 }
 
 @Serializer(forClass = Unit::class)
-object UnitSerializer:KSerializer<Unit> {
+object UnitSerializer: KSerializer<Unit> {
+  override val descriptor: SerialDescriptor
+    get() = SerialClassDescImpl("Unit")
+
   override fun deserialize(input: Decoder) {
     //Do nothing
   }

@@ -1,20 +1,20 @@
 package io.mverse.client.infusionsoft.infrastructure
 
-typealias MultiValueMap = MutableMap<String,List<String>>
+typealias MultiValueMap = MutableMap<String, List<String>>
 
-fun collectionDelimiter(collectionFormat: String) = when(collectionFormat) {
-    "csv" -> ","
-    "tsv" -> "\t"
-    "pipes" -> "|"
-    "ssv" -> " "
-    else -> ""
+fun collectionDelimiter(collectionFormat: String) = when (collectionFormat) {
+  "csv" -> ","
+  "tsv" -> "\t"
+  "pipes" -> "|"
+  "ssv" -> " "
+  else -> ""
 }
 
 val defaultMultiValueConverter: (item: Any?) -> String = { item -> "$item" }
 
-fun <T: Any?> toMultiValue(items: List<T>, collectionFormat: String, map: (item: Any?) -> String = defaultMultiValueConverter): List<String> {
-    return when(collectionFormat) {
-        "multi" -> items.map(map)
-        else -> listOf(items.map(map).joinToString(separator = collectionDelimiter(collectionFormat)))
-    }
+fun <T : Any?> toMultiValue(items: List<T>, collectionFormat: String, map: (item: Any?) -> String = defaultMultiValueConverter): List<String> {
+  return when (collectionFormat) {
+    "multi" -> items.map(map)
+    else -> listOf(items.map(map).joinToString(separator = collectionDelimiter(collectionFormat)))
+  }
 }

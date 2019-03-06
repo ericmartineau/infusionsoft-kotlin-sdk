@@ -63,5 +63,4 @@ data class InfusionsoftClientImpl(private val auth: OAuthToken,
       .setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES)
       .create()
   }
-
 }

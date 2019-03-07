@@ -9,8 +9,13 @@ import io.mverse.client.infusionsoft.infrastructure.*
 import com.google.gson.Gson
 import io.ktor.client.call.receive
 import io.ktor.client.utils.EmptyContent
+import io.ktor.http.contentType
+import io.ktor.http.ContentType.*
 import io.ktor.http.HttpMethod
 import io.ktor.client.request.header
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+
 
 interface SettingApi {
 
@@ -20,14 +25,28 @@ interface SettingApi {
     *  * @return Setting
     */
   suspend fun getApplicationEnabled() : Setting
-    
+  
+  /**
+    *  Asynchronous implementation of Retrieve application status
+    *  Retrieves whether the application is enabled
+    *  * @return A deferred reference to the final Setting  
+    */
+  fun getApplicationEnabledAsync() : Deferred<Setting>
+
   /**
     *  List Contact types
     *  Lists the Contact types in a comma-separated list
     *  * @return Setting
     */
   suspend fun getContactOptionTypes() : Setting
-    
+  
+  /**
+    *  Asynchronous implementation of List Contact types
+    *  Lists the Contact types in a comma-separated list
+    *  * @return A deferred reference to the final Setting  
+    */
+  fun getContactOptionTypesAsync() : Deferred<Setting>
+
 }
 
 class SettingApiImpl(bearerToken:String, basePath: String, gson: Gson) : SettingApi, KtorApiTransport(basePath, bearerToken, gson) {
@@ -38,11 +57,20 @@ class SettingApiImpl(bearerToken:String, basePath: String, gson: Gson) : Setting
     *  * @return Setting
     */
   override suspend fun getApplicationEnabled() : Setting {
-    val call = request( "/setting/application/enabled", mapOf()) {
-      method = HttpMethod.parse("GET")
+    val uri = uriTemplate("/setting/application/enabled")
+      .build()
+    val call = get(uri) {
     }
     return call.receive()
   }
+  
+  /**
+    *  Asynchronous implementation of Retrieve application status
+    *  Retrieves whether the application is enabled
+    *  * @return A deferred reference to the final Setting  
+    */
+  override fun getApplicationEnabledAsync()  = 
+        client.async { getApplicationEnabled() }
 
   /**
     *  List Contact types
@@ -50,11 +78,20 @@ class SettingApiImpl(bearerToken:String, basePath: String, gson: Gson) : Setting
     *  * @return Setting
     */
   override suspend fun getContactOptionTypes() : Setting {
-    val call = request( "/setting/contact/optionTypes", mapOf()) {
-      method = HttpMethod.parse("GET")
+    val uri = uriTemplate("/setting/contact/optionTypes")
+      .build()
+    val call = get(uri) {
     }
     return call.receive()
   }
+  
+  /**
+    *  Asynchronous implementation of List Contact types
+    *  Lists the Contact types in a comma-separated list
+    *  * @return A deferred reference to the final Setting  
+    */
+  override fun getContactOptionTypesAsync()  = 
+        client.async { getContactOptionTypes() }
 
 }
    

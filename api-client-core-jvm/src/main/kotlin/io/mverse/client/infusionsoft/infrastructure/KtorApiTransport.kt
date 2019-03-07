@@ -10,9 +10,13 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.CIOEngineConfig
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.accept
 import io.ktor.client.request.header
+import io.ktor.http.ContentType
+import io.ktor.http.ContentType.*
+import io.ktor.http.HttpMethod
 import io.ktor.http.takeFrom
-import java.util.regex.Pattern
+import java.net.URI
 
 open class KtorApiTransport(val basePath: String, val bearerToken: String, val gson: Gson, configure: (HttpClientConfig<CIOEngineConfig>.() -> Unit)? = null) {
   val authHeaders: Map<String, String> = mapOf("Authorization" to "Bearer $bearerToken")
@@ -35,50 +39,50 @@ open class KtorApiTransport(val basePath: String, val bearerToken: String, val g
     }
   }
 
-  companion object {
-    val fileNamePattern: Pattern = Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?")
+  protected fun uriTemplate(path: String): UriTemplate {
+    return UriTemplate(basePath.trimEnd('/') + path)
   }
 
-  //  protected fun <T> requestBody(content: T?, mediaType: String = JsonMediaType): RequestBody {
-  //    when {
-  //      content is File -> return RequestBody.create(MediaType.parse(mediaType), content)
-  //      mediaType == FormDataMediaType -> {
-  //        val requestBodyBuilder = MultipartBody.Builder().setType(MultipartBody.FORM)
-  //
-  //        // content's type *must* be Map<String, Any>
-  //        @Suppress("UNCHECKED_CAST")
-  //        (content as Map<String, Any>).forEach { key, value ->
-  //          if (value::class == File::class) {
-  //            val file = value as File
-  //            requestBodyBuilder.addFormDataPart(key, file.name, RequestBody.create(MediaType.parse("application/octet-stream"), file))
-  //          } else {
-  //            val stringValue = value as String
-  //            requestBodyBuilder.addFormDataPart(key, stringValue)
-  //          }
-  //          illegalState("Handle other types inside FormDataMediaType")
-  //        }
-  //
-  //        return requestBodyBuilder.build()
-  //      }
-  //      mediaType == JsonMediaType -> return RequestBody.create(MediaType.parse(mediaType), gson.toJson(content))
-  //      mediaType == XmlMediaType -> illegalState("No content negotiation for xml yet")
-  //    }
-  //    illegalState("requestBody currently only supports JSON body and File body.")
-  //  }
+  protected suspend fun get(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Get, block)
 
-  //  val String?.isJson: Boolean
-  //    get() {
-  //      val jsonMime = "(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$"
-  //      return this != null && (this.matches(jsonMime.toRegex()) || this == "*/*")
-  //    }
+  protected suspend fun post(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Post, block)
 
-  protected suspend fun request(path: String, map: Map<String, Any>, block: HttpRequestBuilder.() -> Unit): HttpClientCall {
+  protected suspend fun patch(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Patch, block)
+
+  protected suspend fun put(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Put, block)
+
+  protected suspend fun delete(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Delete, block)
+
+  protected suspend fun head(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Head, block)
+
+  protected suspend fun options(uri: URI, block: HttpRequestBuilder.() -> Unit): HttpClientCall =
+      request(uri, HttpMethod.Options, block)
+
+  protected suspend fun request(uri: URI, httpMethod: HttpMethod, block: HttpRequestBuilder.() -> Unit): HttpClientCall {
     val builder = HttpRequestBuilder()
-    var merged = path
-    map.forEach { query, replacement -> merged = merged.replace("{$query}", "$replacement") }
-    builder.url.takeFrom(basePath + merged.trimStart('/'))
-    builder.block()
-    authHeaders.forEach(builder::header)
+    with(builder) {
+      method = httpMethod
+      url.takeFrom(uri)
+      accept(Application.Json)
+      block()
+      authHeaders.forEach(::header)
+    }
     return client.execute(builder)
   }
+
+  fun HttpRequestBuilder.queryParam(name: String, value: Any?): HttpRequestBuilder = apply {
+    when (value) {
+      null -> { /* Do nothing*/
+      }
+      is Iterable<*> -> url.parameters.appendAll(name, value.map { "$it" })
+      else -> url.parameters.append(name, "$value")
+    }
+  }
+
 }
